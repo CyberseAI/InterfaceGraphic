@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class LoadImage extends AppCompatActivity
     ImageView imagen;
     String path="";
 
+    Button BotonCargar;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,7 +39,10 @@ public class LoadImage extends AppCompatActivity
         setContentView(R.layout.activity_load_image);
 
         imagen = (ImageView)findViewById(R.id.imageLoad);
+
     }
+
+
 
     public void onClick(View view)
     {
