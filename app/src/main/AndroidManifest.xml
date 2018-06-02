@@ -29,7 +29,8 @@
         <activity android:name=".FormUser"></activity>
         <activity android:name=".FormCasas"></activity>
         <activity android:name=".LoginActivity"></activity>
-
+        <activity android:name=".MenuLogeado">
+        </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="$(applicationId).provider"
