@@ -34,8 +34,9 @@
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <Button
-        android:onClick="onClick"
         android:id="@+id/SelectImage"
+        android:onClick="onClick"
+
         android:layout_width="358dp"
         android:layout_height="53dp"
         android:layout_marginBottom="14dp"

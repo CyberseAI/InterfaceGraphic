@@ -2,13 +2,18 @@ package com.example.hp.interfacegrafic;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +25,9 @@ import android.widget.Toast;
 
 import java.io.File;
 
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 public class LoadImage extends AppCompatActivity
 {
     private final String CARPETA_RAIZ = "misImagenes/";
@@ -28,6 +36,7 @@ public class LoadImage extends AppCompatActivity
     final int CODE_SELECCIONA = 10;
     final int CODE_FOTO = 20;
 
+    Button botonCargar;
     ImageView imagen;
     String path="";
 
@@ -39,9 +48,97 @@ public class LoadImage extends AppCompatActivity
         setContentView(R.layout.activity_load_image);
 
         imagen = (ImageView)findViewById(R.id.imageLoad);
+        botonCargar = (Button) findViewById(R.id.SelectImage);
+
+        if(validaPermisos()){
+            botonCargar.setEnabled(true);
+
+        }else{
+            botonCargar.setEnabled(false);
+        }
 
     }
 
+    private boolean validaPermisos() {
+        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
+            return  true;
+
+        }
+        if ((checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED)&&
+                (checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED )){
+
+            return true;
+
+        }
+
+        if((shouldShowRequestPermissionRationale(CAMERA))|| (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE))){
+
+            cargarDialogoRecomendacion();
+
+        }else{
+            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},100);
+
+        }
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 100){
+            if(grantResults.length==2 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                botonCargar.setEnabled(true);
+            }else{
+                solicitarPermisosmaual();
+            }
+        }
+    }
+
+    private void solicitarPermisosmaual() {
+
+        final  CharSequence[] opciones = {"SI","NO"};
+        final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(LoadImage.this);
+        alertOpciones.setTitle("¿Desa confifurar los permisos de forma maual?");
+        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(opciones[i].equals("SI"))
+                {
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }
+                else if(opciones[i].equals("Cargar Imagen"))
+                {
+                    Toast.makeText(getApplicationContext(),"Los permisos no fueron aceptados", Toast.LENGTH_SHORT).show();
+                    dialogInterface.dismiss();
+                }
+            }
+        });
+        alertOpciones.show();
+
+
+    }
+
+    private void cargarDialogoRecomendacion() {
+
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(LoadImage.this);
+        dialogo.setTitle("Permisos Desactivados");
+        dialogo.setMessage("Debe aceptar los permoisos para el corecto funcionamito de la App");
+
+        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)  //>>>> requestPermissions esto es lo que genero esto
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},100);
+
+            }
+        });
+        dialogo.show();
+    }
 
 
     public void onClick(View view)
@@ -98,8 +195,23 @@ public class LoadImage extends AppCompatActivity
         File imagen = new File(path);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagen));
+
+        //>>> permisos de camara para android 7 que es android N
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N  ){
+
+         String authorities=getApplicationContext().getPackageName()+".provider";
+         Uri imageUri = FileProvider.getUriForFile(this,authorities,imagen);
+         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+
+        } else {
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagen));
+        }
+
         startActivityForResult(intent,CODE_FOTO);
+
+        //>>>>
     }
 
     @Override

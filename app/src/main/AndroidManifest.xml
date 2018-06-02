@@ -29,6 +29,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+=======
+        <activity android:name=".FormUser" />
+        <activity android:name=".FormCasas"></activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="$(applicationId).provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+
+
+
+>>>>>>> e863da4db9138832e9c2d0f4de035d4ecaecf038
     </application>
 
 </manifest>
