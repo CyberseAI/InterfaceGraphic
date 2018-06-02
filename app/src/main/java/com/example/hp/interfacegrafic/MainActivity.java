@@ -15,20 +15,20 @@ public class MainActivity extends AppCompatActivity
 
 {
 
-    private Context butonMas;
+    //private Context butonMas;
     GridLayout mainGrid ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        butonMas = this;
+        //butonMas = this;
         loadConponets();
 
     }
 
     private void loadConponets() {
-        Button btnMAs = (Button)this.findViewById(R.id.btn_mas);
+       /* Button btnMAs = (Button)this.findViewById(R.id.btn_mas);
         btnMAs.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity
                 Intent ubic = new Intent(butonMas, buttonMas.class);
                 butonMas.startActivity(ubic);
             }
-        });
+        });*/
 
 
     }
