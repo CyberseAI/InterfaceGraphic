@@ -1,6 +1,7 @@
 package com.example.hp.interfacegrafic;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -70,6 +71,12 @@ public class FormUser extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(contexto, "Datos enviados Existosamente", Toast.LENGTH_SHORT).show();
+
+                        //>>>> condo se guarda los datos esto hace que baya a otra actividad
+                        Intent btnG = new Intent(FormUser.this, FormCasas.class );
+                        FormUser.this.startActivity(btnG);
+                        // en este caso yo lo estoy llevando a formcasas
+
                         nombre.setText("");
                         apellido.setText("");
                         email.setText("");

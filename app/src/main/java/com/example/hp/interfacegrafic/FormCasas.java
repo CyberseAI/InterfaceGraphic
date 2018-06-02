@@ -99,6 +99,12 @@ public class FormCasas extends AppCompatActivity
                     @Override
                     public void run() {
                         Toast.makeText(contexto, "Datos enviados Existosamente", Toast.LENGTH_SHORT).show();
+
+                        /// con esto cunado se guarde la casa va a ir al main activiti pero solo si el usuario existe
+                        /// esto se controla con el email
+                        Intent btnG = new Intent(FormCasas.this, MainActivity.class );
+                        FormCasas.this.startActivity(btnG);
+
                         tipo.setText("");
                         estado.setText("");
                         precio.setText("");
