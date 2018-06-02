@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -117,6 +118,7 @@ public class LoadImage extends AppCompatActivity
                 }
             }
         });
+        alertOpciones.show();
 
 
     }
@@ -193,8 +195,23 @@ public class LoadImage extends AppCompatActivity
         File imagen = new File(path);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagen));
+
+        //>>> permisos de camara para android 7 que es android N
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N  ){
+
+         String authorities=getApplicationContext().getPackageName()+".provider";
+         Uri imageUri = FileProvider.getUriForFile(this,authorities,imagen);
+         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+
+        } else {
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagen));
+        }
+
         startActivityForResult(intent,CODE_FOTO);
+
+        //>>>>
     }
 
     @Override
