@@ -15,28 +15,28 @@ public class MainActivity extends AppCompatActivity
 
 {
 
-    //private Context butonMas;
+    private Context root;
     GridLayout mainGrid ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //butonMas = this;
+        root = this;
         loadConponets();
 
     }
 
     private void loadConponets() {
-       /* Button btnMAs = (Button)this.findViewById(R.id.btn_mas);
+       Button btnMAs = (Button)this.findViewById(R.id.btnLogin);
         btnMAs.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                Intent ubic = new Intent(butonMas, buttonMas.class);
-                butonMas.startActivity(ubic);
+                Intent logear = new Intent(root, LoginActivity.class);
+                root.startActivity(logear);
             }
-        });*/
+        });
 
 
     }
