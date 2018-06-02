@@ -16,17 +16,24 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ViewCasa" />
         <activity android:name=".Maps" />
-        <activity android:name=".Login" />
         <activity android:name=".User" />
         <activity android:name=".LoadImage">
+
+        </activity>
+        <activity android:name=".FormUser" />
+        <activity android:name=".FormCasas" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".FormUser" />
         <activity android:name=".FormCasas" />
+=======
+>>>>>>> 616ec1e44ff5c1b413de1257df9b5f390a8de8dd
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -38,7 +45,14 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+<<<<<<< HEAD
         <activity android:name=".buttonMas"></activity>
+=======
+
+
+
+>>>>>>> e863da4db9138832e9c2d0f4de035d4ecaecf038
+>>>>>>> 616ec1e44ff5c1b413de1257df9b5f390a8de8dd
     </application>
 
 </manifest>
