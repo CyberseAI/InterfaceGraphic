@@ -1,10 +1,12 @@
 package com.example.hp.interfacegrafic;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -15,6 +17,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+
+   private Context btnRegistrar1;
     private GoogleApiClient client;
     private int GOOGLE_CODE = 12345;
 
@@ -30,7 +34,23 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .addApi(Auth.GOOGLE_SIGN_IN_API, options)
                 .build();
 
+        btnRegistrar1 = this;
+        registraseComponents();
+
         loadComponents();
+    }
+
+    private void registraseComponents() {
+
+        Button btnMAs = (Button)this.findViewById(R.id.registrase_btn1);
+        btnMAs.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent logear = new Intent(btnRegistrar1, FormUser.class);
+                btnRegistrar1.startActivity(logear);
+            }
+        });
     }
 
     private void loadComponents()
@@ -59,6 +79,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             {
                 Intent login = new Intent(this, FormUser.class);
                 startActivity(login);
+
+
+
             }
             else
             {
