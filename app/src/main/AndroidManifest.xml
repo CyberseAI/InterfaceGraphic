@@ -29,10 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-=======
-        <activity android:name=".FormUser" />
-        <activity android:name=".FormCasas"></activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="$(applicationId).provider"
