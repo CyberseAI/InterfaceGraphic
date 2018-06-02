@@ -1,6 +1,8 @@
 package com.example.hp.interfacegrafic;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +24,9 @@ import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class FormCasas extends AppCompatActivity {
+public class FormCasas extends AppCompatActivity
+{
+    private Context root;
 
     EditText tipo, estado, precio, ciudad, region, ubicacion, descripcion,
             cantidadCuartos, cantidadBaños, garage, superficie, correo;
@@ -63,7 +67,21 @@ public class FormCasas extends AppCompatActivity {
                 }
             }
         });
+        root = this;
+        loadComponents();
 
+    }
+
+    private void loadComponents()
+    {
+        Button btnImg = (Button)this.findViewById(R.id.btnImagen);
+        btnImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent img = new Intent(root, LoadImage.class);
+                root.startActivity(img);
+            }
+        });
     }
 
     class EnviarDatos extends AsyncTask<String, String, String > {
