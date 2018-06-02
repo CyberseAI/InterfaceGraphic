@@ -10,38 +10,72 @@
         android:id="@+id/googleButton"
         android:layout_width="256dp"
         android:layout_height="72dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="32dp"
-        android:background="#f46709"
+        android:layout_marginEnd="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="29dp"
+        android:background="#094cf4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14"></com.google.android.gms.common.SignInButton>
+        app:layout_constraintTop_toBottomOf="@+id/textView18"></com.google.android.gms.common.SignInButton>
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="150dp"
         android:layout_height="32dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="218dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Iniciar Sesion"
+        android:textColor="#1b0801"
         android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/registrase_btn1"
+    <TextView
+        android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="131dp"
-        android:layout_marginStart="147dp"
-        android:layout_marginTop="26dp"
-        android:text="Registrase"
+        android:layout_marginBottom="29dp"
+
+        android:layout_marginEnd="101dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Inicie sesión con una cuenta de Google"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/googleButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="334dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="32dp"
+        android:text="En caso de no tener una cuenta haga click en el siguiente boton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/googleButton" />
+
+    <Button
+        android:id="@+id/btnCuentaGoogle"
+        android:layout_width="145dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="38dp"
+        android:background="#ebf41109"
+        android:text="Crear cuenta de Google"
+        android:textColor="#e0eeff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
 </android.support.constraint.ConstraintLayout>

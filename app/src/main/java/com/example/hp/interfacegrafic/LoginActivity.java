@@ -18,9 +18,13 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-   private Context btnRegistrar1;
+    //Variables para Iniciar Sesion
+    private Context btnRegistrar1;
     private GoogleApiClient client;
     private int GOOGLE_CODE = 12345;
+    private Context root;
+    //*************************
+    //Variable para crear cuenta
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,20 +39,22 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .build();
 
         btnRegistrar1 = this;
-        registraseComponents();
-
         loadComponents();
+        root=this;
+        crearCuentaGoogle();
     }
 
-    private void registraseComponents() {
-
-        Button btnMAs = (Button)this.findViewById(R.id.registrase_btn1);
-        btnMAs.setOnClickListener(new View.OnClickListener(){
-
+    private void crearCuentaGoogle()
+    {
+        Button btnCC = (Button)this.findViewById(R.id.btnCuentaGoogle);
+        btnCC.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent logear = new Intent(btnRegistrar1, FormUser.class);
-                btnRegistrar1.startActivity(logear);
+            public void onClick(View v)
+            {
+                Intent crearc = new Intent(root, Web.class);
+                String valor = "https://accounts.google.com/signup/v2/webcreateaccount?flowName=GlifWebSignIn&flowEntry=SignUp";
+                crearc.putExtra("valor",valor);
+                startActivity(crearc);
             }
         });
     }
@@ -65,7 +71,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
             }
         });
-
     }
 
     @Override
@@ -79,15 +84,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             {
                 Intent login = new Intent(this, FormUser.class);
                 startActivity(login);
-
-
-
             }
             else
             {
                 Toast.makeText(this, R.string.error_login, Toast.LENGTH_LONG).show();
             }
         }
+
     }
 
     @Override
@@ -95,4 +98,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     {
 
     }
+
+
+
 }
