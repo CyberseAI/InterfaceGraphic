@@ -1,6 +1,7 @@
 package com.example.hp.interfacegrafic;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 public class FormUser extends AppCompatActivity {
 
+    Context root;
     EditText nombre, apellido, email, numeroTelefono, ciudad, direccionActual, password;
     Button guardar;
     HttpClient cliente;
@@ -52,6 +54,21 @@ public class FormUser extends AppCompatActivity {
                 }else {
                     new EnviarDatos(FormUser.this).execute();
                 }
+            }
+        });
+        root=this;
+        loadComponents();
+    }
+
+    private void loadComponents()
+    {
+        Button btn = (Button)this.findViewById(R.id.btn_guardar);
+        btn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent menu = new Intent(root, MenuLogeado.class);
+                root.startActivity(menu);
             }
         });
     }
