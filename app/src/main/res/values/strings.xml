@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Venta de Inmuebles</string>
+    <string name="error_login">El sistema no ha podido conectarse a Google Play Services</string>
 </resources>

@@ -16,17 +16,19 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ViewCasa" />
         <activity android:name=".Maps" />
-        <activity android:name=".Login" />
         <activity android:name=".User" />
         <activity android:name=".LoadImage">
+
+        </activity>
+        <activity android:name=".FormUser" />
+        <activity android:name=".FormCasas" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormUser" />
-        <activity android:name=".FormCasas"></activity>
     </application>
 
 </manifest>
