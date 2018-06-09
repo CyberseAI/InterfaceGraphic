@@ -26,6 +26,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     //*************************
     //Variable para crear cuenta
 
+    //PRA REGISTRAR USARIO
+    private Context regUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -42,6 +45,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         loadComponents();
         root=this;
         crearCuentaGoogle();
+
+        //para reg usario
+        regUsuario = this;
+        loadRegusario();
+        //
+    }
+
+    private void loadRegusario() {
+        Button btnMAs = (Button)this.findViewById(R.id.btnRegistrarUsuario);
+        btnMAs.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent ubic = new Intent(regUsuario, FormUser.class);
+                regUsuario.startActivity(ubic);
+            }
+        });
+
     }
 
     private void crearCuentaGoogle()
