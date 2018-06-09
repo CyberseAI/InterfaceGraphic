@@ -90,7 +90,7 @@ public class FormUser extends AppCompatActivity {
                         Toast.makeText(contexto, "Datos enviados Existosamente", Toast.LENGTH_SHORT).show();
 
                         //>>>> condo se guarda los datos esto hace que baya a otra actividad
-                        Intent btnG = new Intent(FormUser.this, FormCasas.class );
+                        Intent btnG = new Intent(FormUser.this, MenuLogeado.class );
                         FormUser.this.startActivity(btnG);
                         // en este caso yo lo estoy llevando a formcasas
 
@@ -122,7 +122,7 @@ public class FormUser extends AppCompatActivity {
 
     private boolean datos (){
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://10.10.1.150:7777/api/v1.0/user");
+        post = new HttpPost("http://192.168.1.15:7777/api/v1.0/user");
         lista = new ArrayList<NameValuePair>(7);
         lista.add(new BasicNameValuePair("nombre", nombre.getText().toString().trim()));
         lista.add(new BasicNameValuePair("apellido",apellido.getText().toString().trim()));
