@@ -26,7 +26,7 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 public class FormUser extends AppCompatActivity {
 
-    Context root;
+    //Context root;
     EditText nombre, apellido, email, numeroTelefono, ciudad, direccionActual, password;
     Button guardar;
     HttpClient cliente;
@@ -56,11 +56,11 @@ public class FormUser extends AppCompatActivity {
                 }
             }
         });
-        root=this;
-        loadComponents();
+        /*root=this;
+        loadComponents();*/
     }
 
-    private void loadComponents()
+    /*private void loadComponents()
     {
         Button btn = (Button)this.findViewById(R.id.btn_guardar);
         btn.setOnClickListener(new View.OnClickListener(){
@@ -71,7 +71,7 @@ public class FormUser extends AppCompatActivity {
                 root.startActivity(menu);
             }
         });
-    }
+    }*/
 
     class EnviarDatos extends AsyncTask<String, String, String > {
 

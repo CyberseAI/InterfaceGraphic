@@ -34,7 +34,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/textView18"
@@ -69,26 +70,13 @@
         android:id="@+id/btnCuentaGoogle"
         android:layout_width="145dp"
         android:layout_height="58dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="40dp"
         android:background="#ebf41109"
         android:text="Crear cuenta de Google"
         android:textColor="#e0eeff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-    <Button
-        android:id="@+id/btnRegistrarUsuario"
-        android:layout_width="145dp"
-        android:layout_height="58dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="36dp"
-        android:background="#ebf41109"
-        android:text="REGISTRARSE"
-        android:textColor="#e0eeff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCuentaGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
 </android.support.constraint.ConstraintLayout>
