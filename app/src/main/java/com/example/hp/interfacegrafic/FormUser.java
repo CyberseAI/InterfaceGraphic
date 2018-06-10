@@ -54,8 +54,9 @@ public class FormUser extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (apellido.getText().toString().equals("")){
-                    Toast.makeText(FormUser.this, "Nombre no puede ser vacio", Toast.LENGTH_LONG).show();
+                if (password.getText().toString().equals("")){
+                    Toast.makeText(FormUser.this, "Porfabor introdusca una contraceña para su cuenta",
+                            Toast.LENGTH_LONG).show();
                 }else {
                     new EnviarDatos(FormUser.this).execute();
                 }
