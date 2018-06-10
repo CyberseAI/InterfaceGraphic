@@ -134,12 +134,13 @@ public class FormCasas extends AppCompatActivity
             }
 
             return null;
+            ///192.168.1.10
         }
     }
 
     private boolean datos (){
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://192.168.1.15:7777/api/v1.0/inmuebles");
+        post = new HttpPost("http://192.168.1.10:7777/api/v1.0/inmuebles");
         lista = new ArrayList<NameValuePair>(12);
         lista.add(new BasicNameValuePair("tipo", tipo.getText().toString().trim()));
         lista.add(new BasicNameValuePair("estado",estado.getText().toString().trim()));

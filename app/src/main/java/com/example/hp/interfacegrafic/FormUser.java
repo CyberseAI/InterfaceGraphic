@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -27,6 +28,9 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class FormUser extends AppCompatActivity {
 
     //Context root;
+    //>>
+    TextView txtnombre, viewApellido, viewEmail;
+    //>>
     EditText nombre, apellido, email, numeroTelefono, ciudad, direccionActual, password;
     Button guardar;
     HttpClient cliente;
@@ -37,10 +41,11 @@ public class FormUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_user);
-
-        nombre = (EditText) findViewById(R.id.txt_nombre);
-        apellido = (EditText)findViewById(R.id.txt_apellido);
-        email = (EditText)findViewById(R.id.txt_email);
+        //>>>
+        txtnombre = (TextView) findViewById(R.id.txtView_nombre);
+        viewApellido = (TextView) findViewById(R.id.txtView_apellido);
+        viewEmail = (TextView) findViewById(R.id.txtView_email);
+        //<<<
         numeroTelefono = (EditText)findViewById(R.id.txt_telf);
         ciudad = (EditText)findViewById(R.id.txt_ciudad);
         direccionActual = (EditText)findViewById(R.id.txt_direccion);
@@ -49,7 +54,7 @@ public class FormUser extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nombre.getText().toString().equals("")){
+                if (apellido.getText().toString().equals("")){
                     Toast.makeText(FormUser.this, "Nombre no puede ser vacio", Toast.LENGTH_LONG).show();
                 }else {
                     new EnviarDatos(FormUser.this).execute();
@@ -94,9 +99,12 @@ public class FormUser extends AppCompatActivity {
                         FormUser.this.startActivity(btnG);
                         // en este caso yo lo estoy llevando a formcasas
 
-                        nombre.setText("");
-                        apellido.setText("");
-                        email.setText("");
+
+                        //>>>>
+                        txtnombre.setText("");
+                        viewApellido.setText("");
+                        viewEmail.setText("");
+                        //>>>>
                         numeroTelefono.setText("");
                         ciudad.setText("");
                         direccionActual.setText("");
@@ -122,11 +130,13 @@ public class FormUser extends AppCompatActivity {
 
     private boolean datos (){
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://192.168.1.15:7777/api/v1.0/user");
+        post = new HttpPost("http://192.168.1.10:7777/api/v1.0/user");
         lista = new ArrayList<NameValuePair>(7);
-        lista.add(new BasicNameValuePair("nombre", nombre.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("apellido",apellido.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("email",email.getText().toString().trim()));
+        //>>>                                               >>>
+        lista.add(new BasicNameValuePair("nombre", txtnombre.getText().toString().trim()));
+        lista.add(new BasicNameValuePair("apellido",viewApellido.getText().toString().trim()));
+        lista.add(new BasicNameValuePair("email",viewEmail.getText().toString().trim()));
+        //>>>
         lista.add(new BasicNameValuePair("numeroTelefono",numeroTelefono.getText().toString().trim()));
         lista.add(new BasicNameValuePair("ciudad",ciudad.getText().toString().trim()));
         lista.add(new BasicNameValuePair("direccionActual",direccionActual.getText().toString().trim()));

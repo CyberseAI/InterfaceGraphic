@@ -7,40 +7,39 @@
     tools:context=".FormUser">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtView_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="45dp"
-        android:text="Nombre"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtView_apellido"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:text="Apellido"
+
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_nombre" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtView_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:text="Email"
+        
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_apellido" />
 
     <TextView
         android:id="@+id/textView6"
@@ -52,7 +51,7 @@
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_email" />
 
     <TextView
         android:id="@+id/textView7"
