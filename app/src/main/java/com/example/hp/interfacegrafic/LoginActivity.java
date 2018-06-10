@@ -104,6 +104,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             if(result.isSuccess())
             {
                 Intent login = new Intent(this, FormUser.class);
+
                 startActivity(login);
             }
             else

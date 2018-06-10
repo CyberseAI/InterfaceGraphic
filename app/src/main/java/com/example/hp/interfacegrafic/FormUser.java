@@ -26,7 +26,7 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 public class FormUser extends AppCompatActivity {
-
+/**
     //Context root;
     //>>
     TextView txtnombre, viewApellido, viewEmail;
@@ -36,12 +36,13 @@ public class FormUser extends AppCompatActivity {
     HttpClient cliente;
     HttpPost post;
     List<NameValuePair> lista;
-
+**/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_user);
         //>>>
+        /**
         txtnombre = (TextView) findViewById(R.id.txtView_nombre);
         viewApellido = (TextView) findViewById(R.id.txtView_apellido);
         viewEmail = (TextView) findViewById(R.id.txtView_email);
@@ -63,24 +64,19 @@ public class FormUser extends AppCompatActivity {
         });
         /*root=this;
         loadComponents();*/
+
     }
 
-    /*private void loadComponents()
+    private void loadComponents()
     {
-        Button btn = (Button)this.findViewById(R.id.btn_guardar);
-        btn.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v) {
-                Intent menu = new Intent(root, MenuLogeado.class);
-                root.startActivity(menu);
-            }
-        });
-    }*/
+    }
 
-    class EnviarDatos extends AsyncTask<String, String, String > {
+    /**
+    class EnviarDatos extends AsyncTask<String, String, String >
+    {
 
-
+        /**
         private Activity contexto;
         EnviarDatos(Activity context){
             this.contexto = context;
@@ -125,10 +121,14 @@ public class FormUser extends AppCompatActivity {
             }
 
             return null;
-        }
-    }
 
-    private boolean datos (){
+        }
+
+    }
+    */
+    private boolean datos ()
+    {
+        /**
         cliente = new DefaultHttpClient();
         post = new HttpPost("http://192.168.1.10:7777/api/v1.0/user");
         lista = new ArrayList<NameValuePair>(7);
@@ -158,7 +158,9 @@ public class FormUser extends AppCompatActivity {
 
             e.printStackTrace();
         }
-
+        **/
         return false;
+
     }
+
 }
