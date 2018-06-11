@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:background="@drawable/interfazusuario"
+    tools:context=".LoginActivity"
+    >
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleButton"
@@ -14,6 +16,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="29dp"
         android:background="#094cf4"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18"></com.google.android.gms.common.SignInButton>
@@ -71,9 +74,11 @@
         android:layout_marginEnd="119dp"
         android:layout_marginStart="120dp"
         android:layout_marginTop="38dp"
-        android:background="#ebf41109"
+        android:background="@drawable/bacground_btninicio"
+
         android:text="Crear cuenta de Google"
-        android:textColor="#e0eeff"
+        android:textColor="#160701"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
