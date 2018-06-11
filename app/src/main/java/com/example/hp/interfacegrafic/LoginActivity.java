@@ -104,6 +104,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             if(result.isSuccess())
             {
                 Intent login = new Intent(this, FormUser.class);
+                login.putExtra("avatar" , result.getSignInAccount().getPhotoUrl());
+                login.putExtra("txt_Nombre", result.getSignInAccount().getDisplayName());
+                login.putExtra("email", result.getSignInAccount().getEmail());
+
                 startActivity(login);
             }
             else

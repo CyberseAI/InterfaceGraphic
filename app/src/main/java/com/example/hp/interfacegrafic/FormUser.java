@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,61 +26,66 @@ import cz.msebera.android.httpclient.client.methods.HttpPost;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class FormUser extends AppCompatActivity {
+public class FormUser extends AppCompatActivity
+{
+    String avatar,name,email;
+    Context root;
 
-    //Context root;
-    //>>
     TextView txtnombre, viewApellido, viewEmail;
-    //>>
-    EditText nombre, apellido, email, numeroTelefono, ciudad, direccionActual, password;
+
+    EditText  numeroTelefono, ciudad, direccionActual, password;
     Button guardar;
     HttpClient cliente;
     HttpPost post;
     List<NameValuePair> lista;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_user);
-        //>>>
-        txtnombre = (TextView) findViewById(R.id.txtView_nombre);
-        viewApellido = (TextView) findViewById(R.id.txtView_apellido);
-        viewEmail = (TextView) findViewById(R.id.txtView_email);
-        //<<<
-        numeroTelefono = (EditText)findViewById(R.id.txt_telf);
-        ciudad = (EditText)findViewById(R.id.txt_ciudad);
-        direccionActual = (EditText)findViewById(R.id.txt_direccion);
-        password = (EditText)findViewById(R.id.txt_password);
-        guardar = (Button)findViewById(R.id.btn_guardar);
+
+        avatar = this.getIntent().getExtras().getString("avatar");
+        name = this.getIntent().getExtras().getString("name");
+        email = this.getIntent().getExtras().getString("email");
+
+
+
+        numeroTelefono = (EditText)findViewById(R.id.txt_Telf);
+        ciudad = (EditText)findViewById(R.id.txt_Ciudad);
+        direccionActual = (EditText)findViewById(R.id.txt_Direccion);
+        guardar = (Button)findViewById(R.id.btn_Guardar);
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (password.getText().toString().equals("")){
                     Toast.makeText(FormUser.this, "Porfabor introdusca una contraceña para su cuenta",
                             Toast.LENGTH_LONG).show();
+
                 }else {
                     new EnviarDatos(FormUser.this).execute();
                 }
             }
         });
-        /*root=this;
-        loadComponents();*/
+        /*root=this;*/
+        loadComponents();
     }
 
-    /*private void loadComponents()
+    private void loadComponents()
     {
-        Button btn = (Button)this.findViewById(R.id.btn_guardar);
-        btn.setOnClickListener(new View.OnClickListener(){
+        ImageView avatarImg = (ImageView)this.findViewById(R.id.avatar);
+        TextView nametxt = (TextView)this.findViewById(R.id.Nombres);
+        TextView emailLC = (TextView)this.findViewById(R.id.email);
 
-            @Override
-            public void onClick(View v) {
-                Intent menu = new Intent(root, MenuLogeado.class);
-                root.startActivity(menu);
-            }
-        });
-    }*/
+        nametxt.setText(name);
+        emailLC.setText(email);
 
-    class EnviarDatos extends AsyncTask<String, String, String > {
+    }
+
+
+    class EnviarDatos extends AsyncTask<String, String, String >
+    {
 
 
         private Activity contexto;
@@ -100,12 +106,13 @@ public class FormUser extends AppCompatActivity {
                         FormUser.this.startActivity(btnG);
                         // en este caso yo lo estoy llevando a formcasas
 
-
+                        /** Arreglar con el rescate de datos
                         //>>>>
                         txtnombre.setText("");
                         viewApellido.setText("");
                         viewEmail.setText("");
                         //>>>>
+                         */
                         numeroTelefono.setText("");
                         ciudad.setText("");
                         direccionActual.setText("");
@@ -126,18 +133,24 @@ public class FormUser extends AppCompatActivity {
             }
 
             return null;
+
         }
+
     }
 
-    private boolean datos (){
+    private boolean datos ()
+    {
+
         cliente = new DefaultHttpClient();
         post = new HttpPost("http://192.168.1.10:7777/api/v1.0/user");
         lista = new ArrayList<NameValuePair>(7);
         //>>>                                               >>>
+        /** Cambiar con los datos rescatados
         lista.add(new BasicNameValuePair("nombre", txtnombre.getText().toString().trim()));
         lista.add(new BasicNameValuePair("apellido",viewApellido.getText().toString().trim()));
         lista.add(new BasicNameValuePair("email",viewEmail.getText().toString().trim()));
-        //>>>
+        */
+         //>>>
         lista.add(new BasicNameValuePair("numeroTelefono",numeroTelefono.getText().toString().trim()));
         lista.add(new BasicNameValuePair("ciudad",ciudad.getText().toString().trim()));
         lista.add(new BasicNameValuePair("direccionActual",direccionActual.getText().toString().trim()));
@@ -161,5 +174,7 @@ public class FormUser extends AppCompatActivity {
         }
 
         return false;
+
     }
+
 }
