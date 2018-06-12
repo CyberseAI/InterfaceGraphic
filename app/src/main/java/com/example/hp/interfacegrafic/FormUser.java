@@ -106,13 +106,13 @@ public class FormUser extends AppCompatActivity
                         FormUser.this.startActivity(btnG);
                         // en este caso yo lo estoy llevando a formcasas
 
-                        /** Arreglar con el rescate de datos
+                        //Arreglar con el rescate de datos
                         //>>>>
-                        txtnombre.setText("");
-                        viewApellido.setText("");
-                        viewEmail.setText("");
+                        //name.("");
+                        //viewApellido.setText("");
+                        //viewEmail.setText("");
                         //>>>>
-                         */
+
                         numeroTelefono.setText("");
                         ciudad.setText("");
                         direccionActual.setText("");
