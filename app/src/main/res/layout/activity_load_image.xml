@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/intefaziniciarse"
     tools:context=".LoadImage">
 
     <TextView
@@ -36,14 +35,14 @@
 
     <Button
         android:id="@+id/SelectImage"
-        android:layout_width="358dp"
+        android:onClick="onClick"
 
+        android:layout_width="358dp"
         android:layout_height="53dp"
         android:layout_marginBottom="14dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="14dp"
         android:background="#a2f41109"
-        android:onClick="onClick"
         android:text="Seleccionar Imagen"
         android:textColor="#e0eeff"
         app:layout_constraintBottom_toBottomOf="parent"

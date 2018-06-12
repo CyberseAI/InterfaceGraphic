@@ -17,8 +17,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/intefaziniciarse">
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnInmueble"
