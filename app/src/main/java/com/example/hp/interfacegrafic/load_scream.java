@@ -1,5 +1,6 @@
 package com.example.hp.interfacegrafic;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class load_scream extends AppCompatActivity {
+public class load_scream extends Activity {
 
     ImageView iv_1, iv_2, iv_delay;
     Animation ani_1, ani_2, ani_delay;
