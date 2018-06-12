@@ -10,6 +10,10 @@
         android:left="2dp"
         android:right="2dp"
         android:bottom="2dp"/>
-    <solid android:color="#F85B09"/>
+    <gradient
+        android:startColor="#F0250F"
+        android:endColor="#0F48F0"
+        android:angle="270"
+        />
 
 </shape>
