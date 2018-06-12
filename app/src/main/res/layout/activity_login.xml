@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/intefaziniciarse"
     tools:context=".LoginActivity">
 
     <com.google.android.gms.common.SignInButton
@@ -73,7 +74,8 @@
         android:layout_height="58dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
-        android:background="#ebf41109"
+
+        android:background="@drawable/bacground_btn"
         android:text="Crear cuenta de Google"
         android:textColor="#e0eeff"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +88,8 @@
         android:layout_marginEnd="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="36dp"
-        android:background="#ebf41109"
+
+        android:background="@drawable/bacground_btn"
         android:text="REGISTRARSE"
         android:textColor="#e0eeff"
         app:layout_constraintEnd_toEndOf="parent"
