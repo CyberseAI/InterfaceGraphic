@@ -47,12 +47,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         crearCuentaGoogle();
 
         //para reg usario
-        regUsuario = this;
+        /*regUsuario = this;
         loadRegusario();
-        //
+        //*/
     }
 
-        private void loadRegusario() {
+       /* private void loadRegusario() {
         Button btnMAs = (Button)this.findViewById(R.id.btnRegistrarUsuario);
         btnMAs.setOnClickListener(new View.OnClickListener(){
 
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
-    }
+    }*/
 
     private void crearCuentaGoogle()
     {
