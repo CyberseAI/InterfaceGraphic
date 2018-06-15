@@ -17,7 +17,8 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/intefaziniciarse">
 
             <Button
                 android:id="@+id/btnInmueble"
@@ -27,6 +28,8 @@
                 android:layout_marginStart="148dp"
                 android:layout_marginTop="40dp"
                 android:text="AGREGAR INMUEBLE"
+                android:background="@drawable/bacground_btn"
+                android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +42,8 @@
                 android:layout_marginStart="147dp"
                 android:layout_marginTop="37dp"
                 android:text="BUSCAR"
+                android:background="@drawable/bacground_btn"
+                android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnInmueble" />
@@ -51,6 +56,8 @@
                 android:layout_marginStart="140dp"
                 android:layout_marginTop="42dp"
                 android:text="MIS OFERTAS"
+                android:background="@drawable/bacground_btn"
+                android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button14" />
@@ -63,6 +70,8 @@
                 android:layout_marginStart="147dp"
                 android:layout_marginTop="55dp"
                 android:text="+Vecindario"
+                android:background="@drawable/bacground_btn"
+                android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button15" />

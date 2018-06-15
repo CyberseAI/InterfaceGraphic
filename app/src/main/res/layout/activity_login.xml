@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/intefaziniciarse"
     tools:context=".LoginActivity">
 
     <com.google.android.gms.common.SignInButton
@@ -71,26 +72,15 @@
         android:id="@+id/btnCuentaGoogle"
         android:layout_width="145dp"
         android:layout_height="58dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
-        android:background="#ebf41109"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="48dp"
+
+        android:background="@drawable/bacground_btn"
         android:text="Crear cuenta de Google"
-        android:textColor="#e0eeff"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-    <Button
-        android:id="@+id/btnRegistrarUsuario"
-        android:layout_width="145dp"
-        android:layout_height="58dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="36dp"
-        android:background="#ebf41109"
-        android:text="REGISTRARSE"
-        android:textColor="#e0eeff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCuentaGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
 
 </android.support.constraint.ConstraintLayout>

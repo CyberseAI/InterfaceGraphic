@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/intefaziniciarse"
     tools:context=".FormUser">
 
 
@@ -176,9 +177,9 @@
         android:layout_marginEnd="35dp"
         android:layout_marginStart="42dp"
         android:layout_marginTop="66dp"
-        android:background="#a2f41109"
+        android:background="@drawable/bacground_btn"
         android:text="REGISTRAR"
-        android:textColor="#e0eeff"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txt_Direccion"

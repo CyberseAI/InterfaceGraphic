@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/intefaziniciarse"
     tools:context=".User">
 
     <TextView
@@ -117,9 +118,9 @@
         android:layout_marginBottom="42dp"
         android:layout_marginEnd="96dp"
         android:layout_marginStart="96dp"
+        android:background="@drawable/bacground_btn"
         android:text="Llamar!"
-        android:background="#a2f41109"
-        android:textColor="#e0eeff"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
