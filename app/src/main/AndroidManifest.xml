@@ -17,6 +17,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".load_scream">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity android:name=".ViewCasa" />
         <activity android:name=".Maps" />
@@ -24,11 +30,7 @@
         <activity android:name=".LoadImage" />
         <activity android:name=".FormUser"></activity>
         <activity android:name=".FormCasas" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".LoginActivity" />
