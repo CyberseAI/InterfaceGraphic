@@ -31,7 +31,9 @@ public class FormUser extends AppCompatActivity
     String avatar,name,email;
     Context root;
 
-    TextView txtnombre, viewApellido, viewEmail;
+    TextView nametxt, emailLC;
+
+    ImageView avatarImg;
 
     EditText  numeroTelefono, ciudad, direccionActual, password;
     Button guardar;
@@ -49,7 +51,16 @@ public class FormUser extends AppCompatActivity
         name = this.getIntent().getExtras().getString("name");
         email = this.getIntent().getExtras().getString("email");
 
+        avatarImg = (ImageView)this.findViewById(R.id.avatar);
+        nametxt = (TextView)this.findViewById(R.id.Nombres);
+        emailLC = (TextView)this.findViewById(R.id.email);
 
+        nametxt.setText(name);
+        emailLC.setText(email);
+
+
+        nametxt = (TextView)findViewById(R.id.Nombres);
+        emailLC = (TextView)findViewById(R.id.email);
 
         numeroTelefono = (EditText)findViewById(R.id.txt_Telf);
         ciudad = (EditText)findViewById(R.id.txt_Ciudad);
@@ -59,8 +70,8 @@ public class FormUser extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                if (password.getText().toString().equals("")){
-                    Toast.makeText(FormUser.this, "Porfabor introdusca una contraceña para su cuenta",
+                if (ciudad.getText().toString().equals("")){
+                    Toast.makeText(FormUser.this, "porfabor introdusca su ciudad",
                             Toast.LENGTH_LONG).show();
 
                 }else {
@@ -69,19 +80,10 @@ public class FormUser extends AppCompatActivity
             }
         });
         /*root=this;*/
-        loadComponents();
-    }
-
-    private void loadComponents()
-    {
-        ImageView avatarImg = (ImageView)this.findViewById(R.id.avatar);
-        TextView nametxt = (TextView)this.findViewById(R.id.Nombres);
-        TextView emailLC = (TextView)this.findViewById(R.id.email);
-
-        nametxt.setText(name);
-        emailLC.setText(email);
 
     }
+
+
 
 
     class EnviarDatos extends AsyncTask<String, String, String >
@@ -112,11 +114,12 @@ public class FormUser extends AppCompatActivity
                         //viewApellido.setText("");
                         //viewEmail.setText("");
                         //>>>>
-
+                        nametxt.setText("");
+                        emailLC.setText("");
                         numeroTelefono.setText("");
                         ciudad.setText("");
                         direccionActual.setText("");
-                        password.setText("");
+                       // password.setText("");
                     }
                 });
 
@@ -142,7 +145,7 @@ public class FormUser extends AppCompatActivity
     {
 
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://192.168.1.10:7777/api/v1.0/user");
+        post = new HttpPost("http://10.10.1.150:7777/api/v1.0/user");
         lista = new ArrayList<NameValuePair>(7);
         //>>>                                               >>>
         /** Cambiar con los datos rescatados
@@ -151,10 +154,13 @@ public class FormUser extends AppCompatActivity
         lista.add(new BasicNameValuePair("email",viewEmail.getText().toString().trim()));
         */
          //>>>
+        lista.add(new BasicNameValuePair("nombre",nametxt.getText().toString().trim()));
+        lista.add(new BasicNameValuePair("email",emailLC.getText().toString().trim()));
+
         lista.add(new BasicNameValuePair("numeroTelefono",numeroTelefono.getText().toString().trim()));
         lista.add(new BasicNameValuePair("ciudad",ciudad.getText().toString().trim()));
         lista.add(new BasicNameValuePair("direccionActual",direccionActual.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("password",password.getText().toString().trim()));
+       // lista.add(new BasicNameValuePair("password",password.getText().toString().trim()));
         try{
             post.setEntity(new UrlEncodedFormEntity(lista));
             cliente.execute(post);
