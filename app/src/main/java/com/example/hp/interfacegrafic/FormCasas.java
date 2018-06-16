@@ -68,11 +68,11 @@ public class FormCasas extends AppCompatActivity
             }
         });
         root = this;
-        loadComponents();
+       // loadComponents();
 
     }
 
-    private void loadComponents()
+    /*private void loadComponents()
     {
         Button btnImg = (Button)this.findViewById(R.id.btnImagen);
         btnImg.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class FormCasas extends AppCompatActivity
                 root.startActivity(img);
             }
         });
-    }
+    }*/
 
     class EnviarDatos extends AsyncTask<String, String, String > {
 
@@ -140,7 +140,7 @@ public class FormCasas extends AppCompatActivity
 
     private boolean datos (){
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://192.168.1.10:7777/api/v1.0/inmuebles");
+        post = new HttpPost("http://10.10.1.150:7777/api/v1.0/inmubles");
         lista = new ArrayList<NameValuePair>(12);
         lista.add(new BasicNameValuePair("tipo", tipo.getText().toString().trim()));
         lista.add(new BasicNameValuePair("estado",estado.getText().toString().trim()));

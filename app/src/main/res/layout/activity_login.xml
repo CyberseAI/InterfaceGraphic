@@ -72,8 +72,8 @@
         android:id="@+id/btnCuentaGoogle"
         android:layout_width="145dp"
         android:layout_height="58dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="48dp"
 
         android:background="@drawable/bacground_btn"
         android:text="Crear cuenta de Google"
@@ -81,19 +81,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-    <Button
-        android:id="@+id/btnRegistrarUsuario"
-        android:layout_width="145dp"
-        android:layout_height="58dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="36dp"
 
-        android:background="@drawable/bacground_btn"
-        android:text="REGISTRARSE"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCuentaGoogle"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
 </android.support.constraint.ConstraintLayout>
