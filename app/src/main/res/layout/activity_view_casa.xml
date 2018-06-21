@@ -14,8 +14,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Galería de Imagen"
-        android:textSize="20dp"
         android:textStyle="bold"
+        android:textSize="20dp"
+        android:fontFamily="cursive"
+        android:textColor="#0F48F0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,8 +40,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="112dp"
         android:text="Descripción"
-        android:textSize="20dp"
         android:textStyle="bold"
+        android:textSize="20dp"
+        android:fontFamily="cursive"
+        android:textColor="#0F48F0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtView_apellido" />
 
@@ -62,8 +66,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Datos del Inmueble"
-        android:textSize="20dp"
         android:textStyle="bold"
+        android:textSize="20dp"
+        android:fontFamily="cursive"
+        android:textColor="#0F48F0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
