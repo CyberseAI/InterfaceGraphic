@@ -146,7 +146,7 @@ public class FormUser extends AppCompatActivity
     {
 
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://10.10.1.150:7777/api/v1.0/user");
+        post = new HttpPost("http://192.168.43.150:7777/api/v1.0/user");
         lista = new ArrayList<NameValuePair>(7);
         //>>>                                               >>>
         /** Cambiar con los datos rescatados

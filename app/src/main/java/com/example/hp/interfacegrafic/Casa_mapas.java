@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.example.hp.interfacegrafic.Utils.OnLoadDataComplete;
+
 public class Casa_mapas extends AppCompatActivity {
 
     /**
@@ -91,7 +93,7 @@ public class Casa_mapas extends AppCompatActivity {
     }
 
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentPagerAdapter implements OnLoadDataComplete{
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -102,16 +104,23 @@ public class Casa_mapas extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             //return PlaceholderFragment.newInstance(position + 1);
+            ListFragmentCasa lista = new ListFragmentCasa();
+            lista.setOnloadCompleteData(this);
             if (position == 0){
-                return new ListFragmentCasa();
+                return  lista;
             }
-            return  new ListFragmentCasa();
+            return lista;
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
             return 1;
+        }
+
+        @Override
+        public void OnLodCompleteDataResult() {
+
         }
     }
 }
