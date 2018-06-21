@@ -16,24 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".load_scream">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".ViewCasa" />
         <activity android:name=".Maps" />
         <activity android:name=".User" />
         <activity android:name=".LoadImage" />
-        <activity android:name=".FormUser"></activity>
-        <activity android:name=".FormCasas" >
-
-
-        </activity>
-        <activity android:name=".LoginActivity" > </activity>
+        <activity android:name=".FormUser" />
+        <activity android:name=".FormCasas"></activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".MenuLogeado" />
         //------------------------------------------------------------------------
         <provider
@@ -47,7 +42,11 @@
         </provider>
 
         <activity android:name=".Web" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".Casa_mapas"
+            android:label="@string/title_activity_casa_mapas"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

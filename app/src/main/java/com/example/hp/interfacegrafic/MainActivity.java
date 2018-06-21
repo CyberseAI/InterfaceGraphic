@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity
 {
     private Context root;
     GridLayout mainGrid ;
+
+    private Context btnBuscar;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,22 @@ public class MainActivity extends AppCompatActivity
 
         root=this;
         loadComponents();
+
+        btnBuscar = this;
+        loadBtnBuscar();
+    }
+
+    private void loadBtnBuscar() {
+
+        Button btnB = (Button)this.findViewById(R.id.btnSearchM);
+        btnB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent login = new Intent(btnBuscar, Casa_mapas.class);
+                btnBuscar.startActivity(login);
+            }
+        });
+
     }
 
     private void loadComponents()
