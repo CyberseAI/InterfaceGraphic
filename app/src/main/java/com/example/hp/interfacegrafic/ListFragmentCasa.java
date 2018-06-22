@@ -49,7 +49,7 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
 
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://192.168.43.150:7777/api/v1.0/inmuebles_ecp", new JsonHttpResponseHandler() {
+        client.get(DataApp.HOST + "/api/v1.0/inmuebles_ecp", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -62,13 +62,14 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
                         String ciudad = obj.getString("ciudad");
                         String cantidadCuartos = obj.getString("cantidadCuartos");
                         String cantidadBaños = obj.getString("cantidadBaños");
-                        String correo = obj.getString("correo");
                         double lat = obj.getDouble("lat");
                         double lon = obj.getDouble("lon");
+                        String correo = obj.getString("correo");
                         String id = obj.getString("_id");
                         String url = (String) obj.getJSONArray("gallery").get(0);
-                        DataApp.LISTDATA.add(new ItemMenuStructure(tipo, estado, precio, ciudad, "", "", "",
-                                cantidadCuartos, cantidadBaños, "", "",lat,lon, correo, "", id, url));
+                        DataApp.LISTDATA.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
+                                "", "", "", cantidadCuartos, cantidadBaños,
+                                "", "", lat, lon, correo, "", id, url));
                     }
                     LoadComponents();
                 } catch (JSONException e) {

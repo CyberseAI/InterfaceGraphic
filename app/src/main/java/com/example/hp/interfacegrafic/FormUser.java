@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hp.interfacegrafic.DATA.DataApp;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -146,7 +148,7 @@ public class FormUser extends AppCompatActivity
     {
 
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://192.168.43.150:7777/api/v1.0/user");
+        post = new HttpPost(DataApp.HOST+ "/api/v1.0/user");
         lista = new ArrayList<NameValuePair>(7);
         //>>>                                               >>>
         /** Cambiar con los datos rescatados

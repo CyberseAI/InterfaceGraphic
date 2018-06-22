@@ -25,7 +25,8 @@ public class ItemMenuStructure {
 
     public ItemMenuStructure (String tipo, String esatado, String precio, String  ciudad, String region,
                               String ubicacion, String descripcion, String cantidadCuartos,
-                              String cantidadBaños, String garage, String superficie,double lat,double lon,String correo, String user,
+                              String cantidadBaños, String garage, String superficie,
+                              double lat,double lon,String correo, String user,
                               String urlimg, String id ) {
         this.tipo = tipo;
         this.estado = esatado;

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hp.interfacegrafic.DATA.DataApp;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -140,7 +142,7 @@ public class FormCasas extends AppCompatActivity
 
     private boolean datos (){
         cliente = new DefaultHttpClient();
-        post = new HttpPost("http://192.168.43.150:7777/api/v1.0/inmuebles");
+        post = new HttpPost(DataApp.HOST + "/api/v1.0/inmuebles");
         lista = new ArrayList<NameValuePair>(12);
         lista.add(new BasicNameValuePair("tipo", tipo.getText().toString().trim()));
         lista.add(new BasicNameValuePair("estado",estado.getText().toString().trim()));
