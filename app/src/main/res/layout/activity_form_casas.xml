@@ -23,15 +23,17 @@
 
             <TextView
                 android:id="@+id/txtView_nombre"
-                android:layout_width="368dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
 
                 android:layout_marginTop="16dp"
+                android:fontFamily="cursive"
                 android:text="Introduzca los datos de su casa"
-                android:textSize="25dp"
+                android:textColor="#0F48F0"
+                android:textSize="30dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -47,14 +49,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="85dp"
                 android:layout_marginStart="84dp"
-                android:layout_marginTop="47dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/colores_txt"
                 android:ems="10"
                 android:hint="Tipo:"
                 android:inputType="textPersonName"
                 android:textColor="#2240F4"
-                android:background="@drawable/colores_txt"
+
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.306"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -280,25 +283,27 @@
                     android:id="@+id/btnImagen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="26dp"
-                    android:text="Imagen"
+                    android:layout_marginStart="40dp"
                     android:background="@drawable/bacground_btn"
+                    android:text="Imagen"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:text="Mapas"
+                    android:layout_marginEnd="32dp"
                     android:background="@drawable/bacground_btn"
+                    android:text="Mapas"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
 
             </android.support.constraint.ConstraintLayout>
