@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.CasaIdDeatalle;
 import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.loopj.android.http.AsyncHttpClient;
@@ -108,14 +109,6 @@ public class ViewCasa extends AppCompatActivity
             public void onClick(View v) {
                 Intent map = new Intent(root, Maps.class);
                 root.startActivity(map);
-            }
-        });
-        btnUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-                Intent user = new Intent(root, User.class);
-                root.startActivity(user);
             }
         });
     }
