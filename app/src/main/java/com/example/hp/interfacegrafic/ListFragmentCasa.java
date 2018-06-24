@@ -36,7 +36,7 @@ public class ListFragmentCasa extends Fragment {
 
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://10.10.1.150:7777/api/v1.0/inmuebles_ecp", new JsonHttpResponseHandler() {
+        client.get("http://192.168.43.150:7777/api/v1.0/inmuebles_ecp", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
