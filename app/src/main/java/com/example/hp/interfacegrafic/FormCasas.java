@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
@@ -30,8 +31,10 @@ public class FormCasas extends AppCompatActivity
 {
     private Context root;
 
-    EditText tipo, estado, precio, ciudad, region, ubicacion, descripcion,
+    EditText tipo, estado, precio, ciudad, region, descripcion,ubicacion,
             cantidadCuartos, cantidadBaños, garage, superficie, correo;
+
+    TextView  lat, lon;
 
     Button guardarcasa;
     HttpClient cliente;
@@ -49,12 +52,14 @@ public class FormCasas extends AppCompatActivity
         precio= (EditText)findViewById(R.id.txt_precio);
         ciudad = (EditText)findViewById(R.id.txt_ciudad);
         region = (EditText)findViewById(R.id.txt_Region);
-        ubicacion = (EditText)findViewById(R.id.txt_ubicacion);
+        ubicacion = (EditText) findViewById(R.id.txtViewUbucacionget);
         descripcion = (EditText)findViewById(R.id.txt_Descripcion);
         cantidadCuartos = (EditText)findViewById(R.id.txt_cuartos);
-        cantidadBaños = (EditText)findViewById(R.id.txt_baño);
+        cantidadBaños = (EditText)findViewById(R.id.txt_banio);
         garage = (EditText)findViewById(R.id.txt_garje);
         superficie = (EditText)findViewById(R.id.txt_superficie);
+        lat = (TextView)findViewById(R.id.txtLatView);
+        lon = (TextView)findViewById(R.id.txtLonView);
         correo = (EditText) findViewById(R.id.txt_correo);
 
 
@@ -107,6 +112,7 @@ public class FormCasas extends AppCompatActivity
                         Intent btnG = new Intent(FormCasas.this, MainActivity.class );
                         FormCasas.this.startActivity(btnG);
 
+
                         tipo.setText("");
                         estado.setText("");
                         precio.setText("");
@@ -118,6 +124,8 @@ public class FormCasas extends AppCompatActivity
                         cantidadBaños.setText("");
                         garage.setText("");
                         superficie.setText("");
+                        lat.setText("");
+                        lon.setText("");
                         correo.setText("");
 
                     }
@@ -143,7 +151,7 @@ public class FormCasas extends AppCompatActivity
     private boolean datos (){
         cliente = new DefaultHttpClient();
         post = new HttpPost(DataApp.HOST + "/api/v1.0/inmuebles");
-        lista = new ArrayList<NameValuePair>(12);
+        lista = new ArrayList<NameValuePair>(14);
         lista.add(new BasicNameValuePair("tipo", tipo.getText().toString().trim()));
         lista.add(new BasicNameValuePair("estado",estado.getText().toString().trim()));
         lista.add(new BasicNameValuePair("precio",precio.getText().toString().trim()));
@@ -152,9 +160,11 @@ public class FormCasas extends AppCompatActivity
         lista.add(new BasicNameValuePair("ubicacion",ubicacion.getText().toString().trim()));
         lista.add(new BasicNameValuePair("descripcion",descripcion.getText().toString().trim()));
         lista.add(new BasicNameValuePair("cantidadCuartos",cantidadCuartos.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("cantidadBaños",cantidadBaños.getText().toString().trim()));
+        lista.add(new BasicNameValuePair("cantidadBanios",cantidadBaños.getText().toString().trim()));
         lista.add(new BasicNameValuePair("garage",garage.getText().toString().trim()));
         lista.add(new BasicNameValuePair("superficie",superficie.getText().toString().trim()));
+        lista.add(new BasicNameValuePair("lat", lat.getText().toString().trim()));
+        lista.add(new BasicNameValuePair("lon", lon.getText().toString().trim()));
         lista.add(new BasicNameValuePair("correo",correo.getText().toString().trim()));
         try{
             post.setEntity(new UrlEncodedFormEntity(lista));

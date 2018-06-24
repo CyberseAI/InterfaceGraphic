@@ -62,7 +62,7 @@ public class MenuBaseAdapter extends BaseAdapter implements  OnLoadCompleImg{
             //Load IMG
             LoaderImg loader = new LoaderImg();
             loader.setOnloadCompleteImg(img , position,this);
-            loader.execute(this.list.get(position).getUrl());
+            loader.execute(this.list.get(position).getId());
         } else {
             img.setImageBitmap(this.list.get(position).getImg());
         }

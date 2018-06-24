@@ -61,7 +61,7 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
                         String precio = obj.getString("precio");
                         String ciudad = obj.getString("ciudad");
                         String cantidadCuartos = obj.getString("cantidadCuartos");
-                        String cantidadBaños = obj.getString("cantidadBaños");
+                        String cantidadBaños = obj.getString("cantidadBanios");
                         double lat = obj.getDouble("lat");
                         double lon = obj.getDouble("lon");
                         String correo = obj.getString("correo");
@@ -95,9 +95,10 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        
+
+        String datalist = DataApp.LISTDATA.get(position).getUrl();
         Intent intent = new Intent(this.getActivity(), ViewCasa.class);
-        intent.putExtra("id", position);
+        intent.putExtra("url", datalist);
         this.getActivity().startActivity(intent);
 
     }

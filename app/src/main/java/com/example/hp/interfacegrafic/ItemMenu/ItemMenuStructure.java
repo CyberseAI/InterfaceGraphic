@@ -19,9 +19,9 @@ public class ItemMenuStructure {
     private double lon;
     private String correo;
     private String user;
-    private String url;
-    private Bitmap img;
     private String id;
+    private Bitmap img;
+    private String url;
 
     public ItemMenuStructure (String tipo, String esatado, String precio, String  ciudad, String region,
                               String ubicacion, String descripcion, String cantidadCuartos,
