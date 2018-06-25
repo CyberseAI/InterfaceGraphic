@@ -63,7 +63,7 @@ public class ViewCasa extends AppCompatActivity
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userUrl = Data.getUser().toString(); ///para sacar el usria id 
+                String userUrl = Data.getUser().toString(); ///para sacar el usria id
                 Intent user = new Intent(btnuserdatelle, User.class);
                 user.putExtra("user",userUrl);
                 //user.putExtra("user", user);
