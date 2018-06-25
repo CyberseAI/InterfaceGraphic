@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
 {
     private Context root;
+    private Context btnInmueble;
     GridLayout mainGrid ;
 
     private Context btnBuscar;
@@ -29,6 +30,20 @@ public class MainActivity extends AppCompatActivity
 
         btnBuscar = this;
         loadBtnBuscar();
+
+        btnInmueble = this;
+        loadbtnInmueble();
+    }
+
+    private void loadbtnInmueble() {
+        Button btnI = (Button)this.findViewById(R.id.btnInmuebleAdd);
+        btnI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent login = new Intent(btnInmueble, FormCasas.class);
+                btnInmueble.startActivity(login);
+            }
+        });
     }
 
     private void loadBtnBuscar() {

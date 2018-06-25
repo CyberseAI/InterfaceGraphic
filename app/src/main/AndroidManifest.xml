@@ -27,8 +27,8 @@
         <activity android:name=".User" />
         <activity android:name=".LoadImage" />
         <activity android:name=".FormUser" />
-        <activity android:name=".FormCasas"></activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".FormCasas" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MenuLogeado" />
         //------------------------------------------------------------------------
         <provider
@@ -46,6 +46,10 @@
         <activity
             android:name=".Casa_mapas"
             android:label="@string/title_activity_casa_mapas"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Detalle_Casa"
+            android:label="@string/title_activity_detalle__casa"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

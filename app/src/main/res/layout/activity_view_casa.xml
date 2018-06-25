@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/detalleImg"
         android:layout_width="134dp"
         android:layout_height="95dp"
         android:layout_marginEnd="125dp"
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtView_apellido" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/detalleDescripcon"
         android:layout_width="302dp"
         android:layout_height="37dp"
         android:layout_marginEnd="20dp"
@@ -71,7 +71,7 @@
         android:fontFamily="cursive"
         android:textColor="#0F48F0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/detalleDescripcon" />
 
     <TextView
         android:id="@+id/textView8"
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Vecindario:"
+        android:text="Region:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -156,4 +156,58 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/detalleTipo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="47dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalleDescripcon" />
+
+    <TextView
+        android:id="@+id/detalleEstado"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalleTipo" />
+
+    <TextView
+        android:id="@+id/detalleSuperficie"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalleEstado" />
+
+    <TextView
+        android:id="@+id/detalleRegion"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalleSuperficie" />
+
+    <TextView
+        android:id="@+id/detalleCantidadCuartos"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalleRegion" />
+
+    <TextView
+        android:id="@+id/detallePrecio"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalleCantidadCuartos" />
 </android.support.constraint.ConstraintLayout>

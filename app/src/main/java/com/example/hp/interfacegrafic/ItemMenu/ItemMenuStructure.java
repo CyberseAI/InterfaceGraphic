@@ -15,15 +15,18 @@ public class ItemMenuStructure {
     private String cantidadBaños;
     private String garage;
     private String superficie;
+    private double lat;
+    private double lon;
     private String correo;
     private String user;
-    private String url;
-    private Bitmap img;
     private String id;
+    private Bitmap img;
+    private String url;
 
     public ItemMenuStructure (String tipo, String esatado, String precio, String  ciudad, String region,
                               String ubicacion, String descripcion, String cantidadCuartos,
-                              String cantidadBaños, String garage, String superficie, String correo, String user,
+                              String cantidadBaños, String garage, String superficie,
+                              double lat,double lon,String correo, String user,
                               String urlimg, String id ) {
         this.tipo = tipo;
         this.estado = esatado;
@@ -36,6 +39,8 @@ public class ItemMenuStructure {
         this.cantidadBaños = cantidadBaños;
         this.garage = garage;
         this.superficie = superficie;
+        this.lat = lat;
+        this.lon = lon;
         this.correo = correo;
         this.user = user;
         this.url = urlimg;
@@ -128,6 +133,22 @@ public class ItemMenuStructure {
 
     public void setSuperficie(String superficie) {
         this.superficie = superficie;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
     public String getCorreo() {
