@@ -14,6 +14,7 @@ import com.example.hp.interfacegrafic.DATA.DataApp;
 import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.CasaIdDeatalle;
 import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
+import com.example.hp.interfacegrafic.ItemMenu.UserDetalle;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -35,10 +36,14 @@ public class ViewCasa extends AppCompatActivity
 
     protected CasaIdDeatalle Data;
 
+    public Context btnuserdatelle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         ROOT= this;
+        btnuserdatelle = this;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_casa);
         root = this;
@@ -47,6 +52,28 @@ public class ViewCasa extends AppCompatActivity
         datalist = this.getIntent().getExtras().getString("url");
         loadViewcomponets();
         loadAsinkData();
+
+        loadUserDetallecomponents();
+    }
+
+    private void loadUserDetallecomponents()  {
+        Button btnUser = (Button)this.findViewById(R.id.btnProp);
+
+
+        btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userUrl = Data.getUser().toString(); ///para sacar el usria id 
+                Intent user = new Intent(btnuserdatelle, User.class);
+                user.putExtra("user",userUrl);
+                //user.putExtra("user", user);
+                //String userUrl = getString();
+                //user.putExtra("url",userUrl);
+
+                btnuserdatelle.startActivity(user);
+            }
+        });
+
     }
 
     private void loadAsinkData() {
@@ -103,7 +130,6 @@ public class ViewCasa extends AppCompatActivity
     private void loadComponents()
     {
         Button btnMap = (Button)this.findViewById(R.id.btnUbic);
-        Button btnUser = (Button)this.findViewById(R.id.btnProp);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,5 +138,7 @@ public class ViewCasa extends AppCompatActivity
             }
         });
     }
+
+
 
 }
