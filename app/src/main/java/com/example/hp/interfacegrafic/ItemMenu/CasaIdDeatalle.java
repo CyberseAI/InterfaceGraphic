@@ -1,5 +1,7 @@
 package com.example.hp.interfacegrafic.ItemMenu;
 
+import android.graphics.Bitmap;
+
 public class CasaIdDeatalle {
 
     private String tipo;
@@ -10,6 +12,9 @@ public class CasaIdDeatalle {
     private String cantidadCuartos ;
     private String superficie;
     private String user;
+    private String id;
+    private String img;
+    private String url;
 
     public CasaIdDeatalle (String tipo,
                            String estado,
@@ -18,7 +23,10 @@ public class CasaIdDeatalle {
                            String descripcion,
                            String cantidadCuartos,
                            String superficie,
-                           String user){
+                           String user,
+                           String id,
+                           String img,
+                           String url){
 
         this.tipo = tipo;
         this.esatado = estado;
@@ -28,14 +36,9 @@ public class CasaIdDeatalle {
         this.cantidadCuartos = cantidadCuartos;
         this.superficie = superficie;
         this.user = user;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
+        this.id = id;
+        this.img = img;
+        this.url = url;
     }
 
     public String getTipo() {
@@ -92,5 +95,37 @@ public class CasaIdDeatalle {
 
     public void setSuperficie(String superficie) {
         this.superficie = superficie;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

@@ -71,6 +71,11 @@ public class MenuBaseAdapter extends BaseAdapter implements  OnLoadCompleImg{
     }
 
     @Override
+    public void setLoadImage(ImageView container, Bitmap img) {
+
+    }
+
+    @Override
     public void OnloadCompleteImgResult(ImageView img, int position, Bitmap imgsourceimg) {
         this.list.get(position).setImg(imgsourceimg);
         img.setImageBitmap(imgsourceimg);

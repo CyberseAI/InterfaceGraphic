@@ -2,6 +2,7 @@ package com.example.hp.interfacegrafic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,10 @@ import android.widget.TextView;
 import com.example.hp.interfacegrafic.DATA.DataApp;
 import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.CasaIdDeatalle;
+import com.example.hp.interfacegrafic.ItemMenu.HIloImg;
 import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
+import com.example.hp.interfacegrafic.ItemMenu.LoaderImg;
+import com.example.hp.interfacegrafic.ItemMenu.OnLoadCompleImg;
 import com.example.hp.interfacegrafic.ItemMenu.UserDetalle;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -23,7 +27,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class ViewCasa extends AppCompatActivity
+public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 {
     private Context root;
 
@@ -90,8 +94,10 @@ public class ViewCasa extends AppCompatActivity
                                 String cantidadCuartos = response.getString("cantidadCuartos");
                                 String superficie = response.getString("superficie");
                                 String user = response.getString("user");
+                                String id = response.getString("_id");
+                                String img = DataApp.HOST +response.getString("gallery");
                                 Data = new CasaIdDeatalle(tipo, esatado,precio,region,descripcion,
-                                        cantidadCuartos,superficie,user);
+                                        cantidadCuartos,superficie,user,img,id,"");
                                 ROOT.informacion();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -103,12 +109,15 @@ public class ViewCasa extends AppCompatActivity
     private void informacion(){
 
         this.detalleDescripcon.setText(Data.getDescripcion());
-        this.detalleTipo.setText(Data.getTipo()); ;
-        this.detalleEstado.setText(Data.getEsatado()); ;
+        this.detalleTipo.setText(Data.getTipo());
+        this.detalleEstado.setText(Data.getEsatado());
         this.detalleSuperficie.setText(Data.getSuperficie());
         this.detalleRegion.setText(Data.getRegion());
-        this.detalleCantidadCuartos.setText(Data.getCantidadCuartos()); ;
-        this.detallePrecio.setText(Data.getPrecio()); ;
+        this.detalleCantidadCuartos.setText(Data.getCantidadCuartos());
+        this.detallePrecio.setText(Data.getPrecio());
+        HIloImg imgLoad = new HIloImg();
+        imgLoad.execute(Data.getImg());
+        imgLoad.setLoadImage(this.detalleImg, this);
 
     }
 
@@ -140,5 +149,13 @@ public class ViewCasa extends AppCompatActivity
     }
 
 
+    @Override
+    public void setLoadImage(ImageView container, Bitmap img) {
+        container.setImageBitmap(img);
+    }
 
+    @Override
+    public void OnloadCompleteImgResult(ImageView img, int position, Bitmap imgsourceimg) {
+
+    }
 }

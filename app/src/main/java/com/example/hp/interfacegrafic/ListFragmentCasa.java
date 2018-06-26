@@ -66,7 +66,7 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
                         double lon = obj.getDouble("lon");
                         String correo = obj.getString("correo");
                         String id = obj.getString("_id");
-                        String url = (String) obj.getJSONArray("gallery").get(0);
+                        String url = DataApp.HOST + (String) obj.getJSONArray("gallery").get(0);
                         DataApp.LISTDATA.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
                                 "", "", "", cantidadCuartos, cantidadBaños,
                                 "", "", lat, lon, correo, "", id, url));
