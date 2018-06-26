@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -24,13 +26,19 @@ public class MenuLogeado extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Fade fadeIN =new Fade(Fade.IN);
+        fadeIN.setDuration(presentacion_log.DURATION_TRANSITION);
+        fadeIN.setInterpolator(new DecelerateInterpolator());
+
+        getWindow().setEnterTransition(fadeIN);
         setContentView(R.layout.activity_menu_logeado);
 
         CircleMenu circleMenu = (CircleMenu)findViewById(R.id.circulo);
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.icon_menu,R.drawable.icon_cancel)
-                .addSubMenu(Color.parseColor("#e8f73c"), R.drawable.vender)
-                .addSubMenu(Color.parseColor("#258cff"), R.drawable.my_ofert)
-                .addSubMenu(Color.parseColor("#258cff"), R.drawable.buscar)
+                .addSubMenu(Color.parseColor("#f9305a"), R.drawable.vender)
+                .addSubMenu(Color.parseColor("#f9ff52"), R.drawable.my_ofert)
+                .addSubMenu(Color.parseColor("#3dfe3d"), R.drawable.buscar)
                 .addSubMenu(Color.parseColor("#258cff"), R.drawable.vecindario);
 
         circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
@@ -43,16 +51,16 @@ public class MenuLogeado extends AppCompatActivity
                                                              break;
                                                          case 1:
                                                              Toast.makeText(MenuLogeado.this, "Revisar "+arrayname[index], Toast.LENGTH_SHORT).show();
-                                                             startActivity(new Intent(MenuLogeado.this, FormCasas.class));
+                                                             //startActivity(new Intent(MenuLogeado.this, FormCasas.class));
                                                              break;
                                                          case 2:
                                                              Toast.makeText(MenuLogeado.this, "Deceas "+arrayname[index], Toast.LENGTH_SHORT).show();
-                                                             startActivity(new Intent(MenuLogeado.this, FormCasas.class));
+                                                             //startActivity(new Intent(MenuLogeado.this, FormCasas.class));
 
                                                              break;
                                                          case 3:
                                                              Toast.makeText(MenuLogeado.this, "Deceas "+arrayname[index], Toast.LENGTH_SHORT).show();
-                                                             startActivity(new Intent(MenuLogeado.this, FormCasas.class));
+                                                             //startActivity(new Intent(MenuLogeado.this, FormCasas.class));
 
                                                              break;
 
