@@ -43,7 +43,7 @@ public class User extends AppCompatActivity {
 
     private void loadAsinkData() {
         AsyncHttpClient userDeatalle= new AsyncHttpClient();
-        userDeatalle.get("http://192.168.43.150:7777/api/v1.0/user/"+userUrl,
+        userDeatalle.get(DataApp.user_id+"/"+userUrl,
                 new JsonHttpResponseHandler(){
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         try {
@@ -67,7 +67,15 @@ public class User extends AppCompatActivity {
         this.AddressUser.setText(Data.getDireccionActual());
         this.NumberUser.setText(Data.getNumeroTelefono());
         this.emailnombre.setText(Data.getEmail());
-        this.ciudadNombre.setText(Data.getCiudad());
+
+        if (Data.getCiudad() == null){
+
+            this.ciudadNombre.setText("No se sabe su ciudad");
+
+        }else{
+            this.ciudadNombre.setText(Data.getCiudad());
+        }
+
     }
 
     private void loadViewComponents() {
