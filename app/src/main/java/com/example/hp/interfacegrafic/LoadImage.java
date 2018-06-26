@@ -1,258 +1,246 @@
 package com.example.hp.interfacegrafic;
 
-import android.content.DialogInterface;
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
+import com.example.hp.interfacegrafic.DATA.UserData;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
-import static android.Manifest.permission.CAMERA;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import cz.msebera.android.httpclient.Header;
+
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-public class LoadImage extends AppCompatActivity
+public class LoadImage extends AppCompatActivity implements View.OnClickListener
 {
-    private final String CARPETA_RAIZ = "misImagenes/";
-    private final String RUTA_IMAGEN = CARPETA_RAIZ + "misFotos";
 
-    final int CODE_SELECCIONA = 10;
-    final int CODE_FOTO = 20;
+    ImageView IMG_CONTAINER;
+    private final String CARPETTA_RAIZ="misImagenesPrueba/";
+    private final String RUTA_IMAGEN=CARPETTA_RAIZ+"misFotos";
 
-    Button botonCargar;
-    ImageView imagen;
-    String path="";
+    private int MEDIA_CODE=123;
+    private int CAMERA_CODE = 124;
+    private String ABSOLUTE_PATH;
+    private Context root;
 
-    Button BotonCargar;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        root = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_image);
 
-        imagen = (ImageView)findViewById(R.id.imageLoad);
-        botonCargar = (Button) findViewById(R.id.SelectImage);
+        validarPermisos();
 
-        if(validaPermisos()){
-            botonCargar.setEnabled(true);
-
-        }else{
-            botonCargar.setEnabled(false);
-        }
-
+        loadComponents();
     }
 
-    private boolean validaPermisos() {
-        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
-            return  true;
-
-        }
-        if ((checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED)&&
-                (checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED )){
-
+    private boolean validarPermisos()
+    {
+        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M)
+        {
             return true;
-
         }
-
-        if((shouldShowRequestPermissionRationale(CAMERA))|| (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE))){
-
-            cargarDialogoRecomendacion();
-
-        }else{
-            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},100);
-
+        if ((checkSelfPermission(Manifest.permission_group.CAMERA)== PackageManager.PERMISSION_GRANTED)&&
+                (checkSelfPermission(WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED))
+        {
+            return true;
         }
+        requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, Manifest.permission_group.CAMERA},100);
+
         return false;
     }
+    private void loadComponents()
+    {
+        Button media =(Button)findViewById(R.id.media);
+        Button photo = (Button)findViewById(R.id.photo);
+        IMG_CONTAINER = (ImageView)findViewById(R.id.photoView);
+        media.setOnClickListener(this);
+        photo.setOnClickListener(this);
+
+        Button send = (Button)findViewById(R.id.sendbutton);
+        send.setOnClickListener(this);
+    }
+
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == 100){
-            if(grantResults.length==2 && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[1] == PackageManager.PERMISSION_GRANTED){
-                botonCargar.setEnabled(true);
-            }else{
-                solicitarPermisosmaual();
-            }
-        }
-    }
-
-    private void solicitarPermisosmaual() {
-
-        final  CharSequence[] opciones = {"SI","NO"};
-        final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(LoadImage.this);
-        alertOpciones.setTitle("¿Desa confifurar los permisos de forma maual?");
-        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(opciones[i].equals("SI"))
-                {
-                    Intent intent = new Intent();
-                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                    intent.setData(uri);
-                    startActivity(intent);
-                }
-                else if(opciones[i].equals("Cargar Imagen"))
-                {
-                    Toast.makeText(getApplicationContext(),"Los permisos no fueron aceptados", Toast.LENGTH_SHORT).show();
-                    dialogInterface.dismiss();
-                }
-            }
-        });
-        alertOpciones.show();
-
-
-    }
-
-    private void cargarDialogoRecomendacion() {
-
-        AlertDialog.Builder dialogo = new AlertDialog.Builder(LoadImage.this);
-        dialogo.setTitle("Permisos Desactivados");
-        dialogo.setMessage("Debe aceptar los permoisos para el corecto funcionamito de la App");
-
-        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)  //>>>> requestPermissions esto es lo que genero esto
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},100);
-
-            }
-        });
-        dialogo.show();
-    }
-
-
-    public void onClick(View view)
+    public void onClick(View v)
     {
-        cargarImagen();
-    }
+        if(v.getId()==R.id.media)
+        {
+            LoadMediaData();
+        }
 
-    private void cargarImagen()
-    {
-        final  CharSequence[] opciones = {"Tomar Foto", "Cargar Imagen", "Cancelar"};
-        final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(LoadImage.this);
-        alertOpciones.setTitle("Seleccione una Opción");
-        alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(opciones[i].equals("Tomar Foto"))
-                {
-                    tomarFotografia();
-                }
-                else if(opciones[i].equals("Cargar Imagen"))
-                {
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    intent.setType("image/");
-                    startActivityForResult(intent.createChooser(intent, "Selecciona la app de su gusto"),CODE_SELECCIONA);
-                }
-                else if(opciones[i].equals("Cancelar"))
-                {
-                    dialogInterface.dismiss();
-                }
+        if(v.getId()==R.id.photo)
+        {
+            openCameraIntent();
+        }
+
+        if(v.getId()==R.id.sendbutton)
+        {
+            try {
+                sendPhoto();
             }
-        });
-        alertOpciones.show();
-
-
-    }
-
-    private void tomarFotografia()
-    {
-        File fileImagen = new File(Environment.getExternalStorageDirectory(), RUTA_IMAGEN);
-        boolean isCreada = (boolean) fileImagen.exists();
-
-        String nombreImagen="";
-
-        if (isCreada==false)
-        {
-            isCreada=fileImagen.mkdirs();
-        }
-        if (isCreada==true)
-        {
-            nombreImagen = (System.currentTimeMillis()/1000)+".jpg";
-        }
-
-        path = Environment.getExternalStorageDirectory()+File.separator+RUTA_IMAGEN+File.separator+nombreImagen;
-        File imagen = new File(path);
-
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        //>>> permisos de camara para android 7 que es android N
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N  ){
-
-         String authorities=getApplicationContext().getPackageName()+".provider";
-         Uri imageUri = FileProvider.getUriForFile(this,authorities,imagen);
-         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-
-        } else {
-
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagen));
-        }
-
-        startActivityForResult(intent,CODE_FOTO);
-
-        //>>>>
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK)
-        {
-            switch (requestCode)
+            catch (FileNotFoundException e)
             {
-                case CODE_SELECCIONA:
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    private void sendPhoto() throws FileNotFoundException
+    {
+        if(IMG_CONTAINER.getDrawable()!=null)
+        {
+            if(imageFilePath != null)
+            {
+                File file = new File(imageFilePath);
+                RequestParams params = new RequestParams();
+                params.put("img", file);
+                AsyncHttpClient client = new AsyncHttpClient();
+                if(UserData.ID==null)
                 {
-                    Uri miPath = data.getData();
-                    imagen.setImageURI(miPath);
-                    break;
+                    client.post("http://192.168.43.150:7777/api/v1.0/homeimg/5b2ea3e8434d4c482c71a5a3", params, new JsonHttpResponseHandler(){
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, JSONObject response)
+                                {
+                                    try {
+                                        String path = response.getString("path");
+                                        if(path!=null)
+                                        {
+                                            Intent profile = new Intent(root, MainActivity.class);
+                                            root.startActivity(profile);
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        Toast.makeText(root, "No se ha sacado una foto", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            }
+                    );
                 }
-                case CODE_FOTO:
-                {
-                    MediaScannerConnection.scanFile(this, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                        @Override
-                        public void onScanCompleted(String path, Uri uri)
-                        {
-                            Log.i("Ruta de almacenamiento","Path" + path);
-                        }
-                    });
+                else {
 
-                    Bitmap bitmap = BitmapFactory.decodeFile(path);
-                    imagen.setImageBitmap(bitmap);
-
-
-
-                    break;
-                }
-                default:
-                {
-                    break;
+                    Toast.makeText(this, "No se ha sacado una foto", Toast.LENGTH_LONG).show();
                 }
             }
+            else {
 
+                Toast.makeText(this, "No se ha sacado una foto", Toast.LENGTH_LONG).show();
+            }
+        }
+        else {
 
+            Toast.makeText(this, "No se ha sacado una foto", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+
+    private void LoadMediaData()
+    {
+        Intent media = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        media.setType("image/");
+        startActivityForResult(media.createChooser(media, "Escoja la app"), MEDIA_CODE);
+    }
+
+    private String imageFilePath;
+
+    private File createImageFile() throws IOException
+    {
+        String timeStamp = new SimpleDateFormat("yyyMMdd_HHms",
+                Locale.getDefault()).format(new Date());
+        String imageFileName = "IMG_"+timeStamp+"_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
+
+        imageFilePath = image.getAbsolutePath();
+        return image;
+    }
+
+    private static final int REQUEST_CAPTURE_IMAGE=100;
+
+    private void openCameraIntent()
+    {
+        Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File file = createFile();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            Uri fileuri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", file);
+            camera.putExtra(MediaStore.EXTRA_OUTPUT, fileuri);
+        }else
+        {
+            camera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+        }
+        startActivityForResult(camera, CAMERA_CODE);
+    }
+
+    private File createFile()
+    {
+        File file = new File(Environment.getExternalStorageDirectory(), RUTA_IMAGEN);
+        if(!file.exists())
+        {
+            file.mkdirs();
+        }
+
+        String name = "";
+        if(file.exists())
+        {
+            name = "IMG_"+System.currentTimeMillis()/100+".jpg";
+        }
+        imageFilePath = file.getAbsolutePath()+File.separator+name;
+        File fileimg = new File(imageFilePath);
+        return fileimg;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == MEDIA_CODE)
+        {
+            IMG_CONTAINER.setImageURI(data.getData());
+        }
+        if (requestCode == CAMERA_CODE)
+        {
+            loadImageCamera();
+        }
+    }
+
+    private void loadImageCamera()
+    {
+        Bitmap img = BitmapFactory.decodeFile(imageFilePath);
+        if(img != null)
+        {
+            IMG_CONTAINER.setImageBitmap(img);
+        }
     }
 }
 

@@ -7,48 +7,50 @@
     android:background="@drawable/intefaziniciarse"
     tools:context=".LoadImage">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/media"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="110dp"
-        android:layout_marginStart="111dp"
-        android:layout_marginTop="16dp"
-        android:text="SUBIR IMAGENES"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:fontFamily="cursive"
-        android:textColor="#2240F4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Media"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageLoad"
-        android:layout_width="148dp"
-        android:layout_height="133dp"
-        android:layout_marginEnd="118dp"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="31dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
     <Button
-        android:id="@+id/SelectImage"
-        android:layout_width="358dp"
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Tomar Foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        android:layout_height="53dp"
-        android:layout_marginBottom="14dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="14dp"
-        android:onClick="onClick"
-        android:text="Seleccionar Imagen"
-        android:background="@drawable/bacground_btn"
-        android:textColor="#FFFFFF"
+    <ImageView
+        android:id="@+id/photoView"
+        android:layout_width="340dp"
+        android:layout_height="339dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/sendbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photoView" />
 </android.support.constraint.ConstraintLayout>
