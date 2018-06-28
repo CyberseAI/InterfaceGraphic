@@ -95,6 +95,7 @@ public class Casa_mapas extends AppCompatActivity {
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter implements OnLoadDataComplete{
 
+        private MapsFragment maps;
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -104,10 +105,15 @@ public class Casa_mapas extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             //return PlaceholderFragment.newInstance(position + 1);
+
             ListFragmentCasa lista = new ListFragmentCasa();
             lista.setOnloadCompleteData(this);
+            maps=new MapsFragment();
             if (position == 0){
                 return  lista;
+            }
+            if (position ==1){
+                return maps;
             }
             return lista;
         }
@@ -115,12 +121,12 @@ public class Casa_mapas extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 1;
+            return 2;
         }
 
         @Override
         public void OnLodCompleteDataResult() {
-
+            maps.setListFragment();
         }
     }
 }

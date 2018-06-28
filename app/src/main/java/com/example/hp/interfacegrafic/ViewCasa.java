@@ -133,7 +133,7 @@ public class ViewCasa extends AppCompatActivity
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent map = new Intent(root, Maps.class);
+                Intent map = new Intent(root, MapsFragment.class);
                 root.startActivity(map);
             }
         });
