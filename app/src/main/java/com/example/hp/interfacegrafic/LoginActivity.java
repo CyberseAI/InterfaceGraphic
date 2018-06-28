@@ -112,7 +112,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
             else
             {
-                Toast.makeText(this, R.string.error_login, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.error_login,
+                        Toast.LENGTH_LONG).show();
             }
         }
 
