@@ -40,6 +40,9 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 public class LoadImage extends AppCompatActivity implements View.OnClickListener
 {
 
+
+    private String userUrl; // este es el url
+
     ImageView IMG_CONTAINER;
     private final String CARPETTA_RAIZ="misImagenesPrueba/";
     private final String RUTA_IMAGEN=CARPETTA_RAIZ+"misFotos";
@@ -53,6 +56,9 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         root = this;
+
+        userUrl= this.getIntent().getExtras().getString("_id");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_image);
 
@@ -127,7 +133,7 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
                 AsyncHttpClient client = new AsyncHttpClient();
                 if(UserData.ID==null)
                 {
-                    client.post("http://192.168.43.150:7777/api/v1.0/homeimg/5b2ea3e8434d4c482c71a5a3", params, new JsonHttpResponseHandler(){
+                    client.post("http://192.168.43.150:7777/api/v1.0/homeimg/"+userUrl, params, new JsonHttpResponseHandler(){
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response)
                                 {

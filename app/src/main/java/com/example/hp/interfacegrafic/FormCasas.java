@@ -109,9 +109,6 @@ public class FormCasas extends AppCompatActivity
 
                         /// con esto cunado se guarde la casa va a ir al main activiti pero solo si el usuario existe
                         /// esto se controla con el email
-                        Intent btnG = new Intent(FormCasas.this, LoadImage.class );
-                        FormCasas.this.startActivity(btnG);
-
 
                         tipo.setText("");
                         estado.setText("");
@@ -127,6 +124,11 @@ public class FormCasas extends AppCompatActivity
                         lat.setText("");
                         lon.setText("");
                         correo.setText("");
+
+
+                        Intent btnG = new Intent(FormCasas.this, LoadImage.class );
+
+                        FormCasas.this.startActivity(btnG);
 
                     }
                 });
