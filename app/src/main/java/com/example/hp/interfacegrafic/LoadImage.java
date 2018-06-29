@@ -132,7 +132,7 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
                 RequestParams params = new RequestParams();
                 params.put("img", file);
                 AsyncHttpClient client = new AsyncHttpClient();
-                if(UserData.ID==null)
+                if(UserData.ID!=null)
                 {
                     client.post("http://192.168.43.150:7777/api/v1.0/homeimg/"+ UserData.ID, params, new JsonHttpResponseHandler(){
                                 @Override
