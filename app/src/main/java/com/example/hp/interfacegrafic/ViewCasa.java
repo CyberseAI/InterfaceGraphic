@@ -22,8 +22,11 @@ import com.example.hp.interfacegrafic.ItemMenu.UserDetalle;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -31,7 +34,11 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 {
     private Context root;
 
-    public String datalist; //este es el id
+    private Context btnG; // para el boton de gallery
+
+    public static int size; //este es el cantidad imagenes
+    public  String idCasa;   //id de la casa
+
     protected TextView detalleTipo, detalleDescripcon, detalleEstado, detalleSuperficie,
             detalleRegion, detalleCantidadCuartos,detallePrecio;
     protected ImageView detalleImg;
@@ -48,17 +55,25 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         ROOT= this;
         btnuserdatelle = this;
 
+        btnG = this;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_casa);
         root = this;
         loadComponents();
 
-        datalist = this.getIntent().getExtras().getString("url");
+        size = this.getIntent().getExtras().getInt("size");
+        idCasa = this.getIntent().getExtras().getString("id");
+
         loadViewcomponets();
         loadAsinkData();
 
+        loadGallery(); // para el gallery
+
         loadUserDetallecomponents();
     }
+
+
 
     private void loadUserDetallecomponents()  {
         Button btnUser = (Button)this.findViewById(R.id.btnProp);
@@ -82,7 +97,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 
     private void loadAsinkData() {
         AsyncHttpClient casadetalle= new AsyncHttpClient();
-        casadetalle.get(DataApp.inmueble_id +"/"+ datalist,
+        casadetalle.get(DataApp.inmueble_id +"/"+ idCasa,
                     new JsonHttpResponseHandler(){
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
@@ -95,9 +110,14 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
                                 String superficie = response.getString("superficie");
                                 String user = response.getString("user");
                                 String id = response.getString("_id");
-                                String img = DataApp.HOST +response.getString("gallery");
+                                //String url = DataApp.HOST + (String)response.getJSONArray("gallery").get(0);
+                                JSONArray listGalery= response.getJSONArray("gallery");
+                                ArrayList<String> urlLists = new ArrayList<String>();
+                                for (int j = 0; j < listGalery.length(); j++){
+                                    urlLists.add(DataApp.HOST + listGalery.getString(j));
+                                }
                                 Data = new CasaIdDeatalle(tipo, esatado,precio,region,descripcion,
-                                        cantidadCuartos,superficie,user,img,id,"");
+                                        cantidadCuartos,superficie,user,id,urlLists);
                                 ROOT.informacion();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -115,9 +135,9 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         this.detalleRegion.setText(Data.getRegion());
         this.detalleCantidadCuartos.setText(Data.getCantidadCuartos());
         this.detallePrecio.setText(Data.getPrecio());
-        HIloImg imgLoad = new HIloImg();
+        /*HIloImg imgLoad = new HIloImg();
         imgLoad.execute(Data.getImg());
-        imgLoad.setLoadImage(this.detalleImg, this);
+        imgLoad.setLoadImage(this.detalleImg, this);*/
 
     }
 
@@ -133,6 +153,15 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 
         this.detalleImg = (ImageView)  this.findViewById(R.id.detalleImg);
 
+       /* if (this.Data.getImg() == null) {
+            //Load IMG
+            LoaderImg loader = new LoaderImg();
+            loader.setOnloadCompleteImg(detalleImg , 0,this);
+            loader.execute(this.Data.getUrl().get(0));
+        } else {
+            detalleImg.setImageBitmap(this.Data.getImg().get(0));
+        }*/
+
 
     }
 
@@ -146,6 +175,23 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
                 root.startActivity(map);
             }
         });
+    }
+
+    private void loadGallery() {
+        Button btnGaller = (Button)this.findViewById(R.id.btnGallery);
+
+
+        btnGaller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 ///para sacar el usria id
+                Intent iduser = new Intent(btnG, GaleriaIMG.class);
+                iduser.putExtra("id",size);
+                btnG.startActivity(iduser);
+            }
+        });
+
+
     }
 
 

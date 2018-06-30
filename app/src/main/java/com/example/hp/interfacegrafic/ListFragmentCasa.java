@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.example.hp.interfacegrafic.ItemMenu.MenuBaseAdapter;
 import com.example.hp.interfacegrafic.Utils.OnLoadDataComplete;
@@ -103,8 +104,10 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         String datalist = DataApp.LISTDATA.get(position).getUrl();
+        //UserData.IDCasa = datalist;
         Intent intent = new Intent(this.getActivity(), ViewCasa.class);
-        intent.putExtra("url", datalist);
+        intent.putExtra("size", position);
+        intent.putExtra("id", datalist);
         this.getActivity().startActivity(intent);
 
     }
