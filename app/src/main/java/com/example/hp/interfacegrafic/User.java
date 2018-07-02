@@ -111,17 +111,34 @@ public class User extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                if (ActivityCompat.checkSelfPermission(ROOT, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                    String num = NumberUser.getText().toString();
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                {
+                    if (ActivityCompat.checkSelfPermission(ROOT, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                        String num = NumberUser.getText().toString();
 
-                    Uri call2 = Uri.parse("tel:" + num);
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + num));
+                        Uri call2 = Uri.parse("tel:" + num);
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + num));
 
-                    startActivity(intent);
+                        startActivity(intent);
+
+                    }
+
+                    requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE},100);
 
                 }
+                else
+                {
+                    if (ActivityCompat.checkSelfPermission(ROOT, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                        String num = NumberUser.getText().toString();
 
-                requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE},100);
+                        Uri call2 = Uri.parse("tel:" + num);
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + num));
+
+                        startActivity(intent);
+
+                    }
+
+                }
             }
         });
     }
