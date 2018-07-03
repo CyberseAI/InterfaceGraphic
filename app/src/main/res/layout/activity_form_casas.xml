@@ -248,6 +248,7 @@
                 android:background="@drawable/bacground_btn"
                 android:text="Registrar"
                 android:textColor="#FFFFFF"
+                android:fontFamily="cursive"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_correo" />
@@ -271,6 +272,7 @@
                     android:background="@drawable/bacground_btn"
                     android:text="Imagen"
                     android:textColor="#FFFFFF"
+                    android:fontFamily="cursive"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -284,6 +286,7 @@
                     android:background="@drawable/bacground_btn"
                     android:text="Mapas"
                     android:textColor="#FFFFFF"
+                    android:fontFamily="cursive"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

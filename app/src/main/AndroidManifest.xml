@@ -23,13 +23,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".load_scream">
-        </activity>
+        <activity android:name=".load_scream"></activity>
         <activity android:name=".ViewCasa" />
         <activity android:name=".User" />
-        <activity android:name=".LoadImage" >
-
-        </activity>
+        <activity android:name=".LoadImage"></activity>
         <activity android:name=".FormUser" />
         <activity android:name=".FormCasas" />
         <activity android:name=".LoginActivity" />
@@ -46,14 +43,12 @@
         </provider>
 
         <activity android:name=".Web" />
-        <activity android:name=".MainActivity" >
-
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Casa_mapas"
@@ -77,7 +72,11 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".GaleriaIMG"
+            android:label="@string/title_activity_galeria_img"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

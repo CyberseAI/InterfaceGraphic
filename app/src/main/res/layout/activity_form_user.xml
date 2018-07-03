@@ -59,6 +59,7 @@
         android:layout_marginTop="8dp"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +89,7 @@
         android:layout_marginTop="11dp"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:fontFamily="cursive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -130,6 +132,7 @@
 
         android:textSize="15dp"
         android:textStyle="bold"
+        android:fontFamily="cursive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
@@ -143,6 +146,7 @@
         android:inputType="textPersonName"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
@@ -169,6 +173,7 @@
         android:inputType="textPersonName"
         android:textSize="15dp"
         android:textStyle="bold"
+        android:fontFamily="cursive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 

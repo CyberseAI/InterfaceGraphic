@@ -5,9 +5,12 @@
         android:radius="25dp"/>
     <gradient
         android:angle="135"
-        android:centerColor="#e9f76e"
-        android:endColor="#7426ce"
-        android:startColor="#3a4f8c"
+        android:centerColor="#f4df95"
+        android:endColor="#da6e4d"
+        android:startColor="#ce4d26"
         android:type="linear" />
+    <stroke
+        android:width="2dp"
+        android:color="#ef4627"/>
 
 </shape>
