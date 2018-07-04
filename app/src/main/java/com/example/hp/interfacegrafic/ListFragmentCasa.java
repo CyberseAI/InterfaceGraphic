@@ -50,6 +50,7 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
 
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
+
         client.get(DataApp.HOST + "/api/v1.0/inmuebles_ecp", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

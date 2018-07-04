@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.UserData;
+import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -21,11 +23,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class MapsFragment extends Fragment implements OnMapReadyCallback, GoogleMap.
-        OnInfoWindowClickListener, View.OnClickListener{
+        OnInfoWindowClickListener, View.OnClickListener, GoogleMap.OnMarkerClickListener{
     private View ROOT;
     private GoogleMap mMap;
     private ListFragment lista;
+
+    protected ArrayList<ItemMenuStructure> Data;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +47,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         if (DataApp.LISTDATA != null && DataApp.LISTDATA.size() > 0) {
             for (int i = 0; i < DataApp.LISTDATA.size(); i++) {
                 LatLng position = new LatLng(DataApp.LISTDATA.get(i).getLat(), DataApp.LISTDATA.get(i).getLon());
-                mMap.addMarker(new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getTipo()));
-
-                mMap.setOnInfoWindowClickListener(this);
-
+                MarkerOptions obj = new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getTipo());
+                String id = DataApp.LISTDATA.get(i).getUrl();
+                // en ves de gettipo se puedo poner getUrl que es la id para recuperar datos
+                mMap.addMarker(obj).setTag(id);
             }
+
+            mMap.setOnMarkerClickListener(this);
         }
     }
     @Override
@@ -90,5 +98,17 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
 
 
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        //enves de get tag se pone get titlepara recuperar la id
+        String id = getTag();
+        LatLng ln = marker.getPosition();
+        Intent intent = new Intent(this.getActivity(), ViewCasa.class);
+        intent.putExtra("id", id);
+        //intent.putExtra("size",ln);
+        this.startActivity(intent);
+        return false;
     }
 }

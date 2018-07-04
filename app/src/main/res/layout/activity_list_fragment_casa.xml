@@ -11,6 +11,7 @@
        android:id="@+id/super_lista"
        android:layout_width="match_parent"
        android:layout_height="594dp"
+       android:background="@drawable/jascuadrado"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent">

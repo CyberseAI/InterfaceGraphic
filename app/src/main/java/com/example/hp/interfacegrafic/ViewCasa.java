@@ -38,6 +38,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 
     public static int size; //este es el cantidad imagenes
     public  String idCasa;   //id de la casa
+    //public  String idMapa; ///recuperando id desde mapas
 
     protected TextView detalleTipo, detalleDescripcon, detalleEstado, detalleSuperficie,
             detalleRegion, detalleCantidadCuartos,detallePrecio;
@@ -62,8 +63,15 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         root = this;
         loadComponents();
 
-        size = this.getIntent().getExtras().getInt("size");
-        idCasa = this.getIntent().getExtras().getString("id");
+
+
+
+
+        if (this.getIntent().getExtras() != null) {
+            idCasa = this.getIntent().getExtras().getString("id");
+            size = this.getIntent().getExtras().getInt("size");
+            //idMapa = this.getIntent().getExtras().getString("id");
+        }
 
         loadViewcomponets();
         loadAsinkData();
@@ -172,6 +180,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
             @Override
             public void onClick(View v) {
                 Intent map = new Intent(root, MapsFragment.class);
+
                 root.startActivity(map);
             }
         });
