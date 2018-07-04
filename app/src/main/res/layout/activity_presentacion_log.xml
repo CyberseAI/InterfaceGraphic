@@ -18,6 +18,7 @@
         android:onClick="next"
         android:text="Siguiente >>"
         android:textColor="@android:color/background_light"
+        android:fontFamily="cursive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
