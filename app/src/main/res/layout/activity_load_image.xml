@@ -16,7 +16,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/bacground_btn"
         android:text="Media"
-        android:textColor="#f4df95"
+        android:textColor="#f7f6f4"
         android:fontFamily="cursive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/bacground_btn"
         android:text="Tomar Foto"
-        android:textColor="#f4df95"
+        android:textColor="#f9f8f7"
         android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +57,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/bacground_btn"
         android:text="Enviar"
-        android:textColor="#f4df95"
+        android:textColor="#f9f8f7"
         android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
