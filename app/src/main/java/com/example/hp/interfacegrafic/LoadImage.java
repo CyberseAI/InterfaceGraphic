@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.hp.interfacegrafic.DATA.DataApp;
 import com.example.hp.interfacegrafic.DATA.UserData;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -40,6 +41,9 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 public class LoadImage extends AppCompatActivity implements View.OnClickListener
 {
 
+
+    //private String userUrl; // este es el url
+
     ImageView IMG_CONTAINER;
     private final String CARPETTA_RAIZ="misImagenesPrueba/";
     private final String RUTA_IMAGEN=CARPETTA_RAIZ+"misFotos";
@@ -49,17 +53,27 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
     private String ABSOLUTE_PATH;
     private Context root;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         root = this;
+
+
+        //userUrl= this.getIntent().getExtras().getString("id");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_image);
 
         validarPermisos();
 
         loadComponents();
+
+
     }
+
+
 
     private boolean validarPermisos()
     {
@@ -85,6 +99,7 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
         photo.setOnClickListener(this);
 
         Button send = (Button)findViewById(R.id.sendbutton);
+        //Intent send1 = new Intent(this, LatLonMaps.class);
         send.setOnClickListener(this);
     }
 
@@ -125,9 +140,9 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
                 RequestParams params = new RequestParams();
                 params.put("img", file);
                 AsyncHttpClient client = new AsyncHttpClient();
-                if(UserData.ID==null)
+                if(UserData.ID!=null)
                 {
-                    client.post("http://192.168.43.150:7777/api/v1.0/homeimg/5b326d3cdc7bf11becc396d1", params, new JsonHttpResponseHandler(){
+                    client.post("http://192.168.43.150:7777/api/v1.0/homeimg/"+ UserData.ID, params, new JsonHttpResponseHandler(){
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response)
                                 {
@@ -135,7 +150,7 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
                                         String path = response.getString("path");
                                         if(path!=null)
                                         {
-                                            Intent profile = new Intent(root, MainActivity.class);
+                                            Intent profile = new Intent(root, LatLonMaps.class);
                                             root.startActivity(profile);
                                         }
                                     } catch (JSONException e) {

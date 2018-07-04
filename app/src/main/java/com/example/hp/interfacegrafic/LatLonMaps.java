@@ -7,6 +7,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.hp.interfacegrafic.DATA.DataApp;
 import com.example.hp.interfacegrafic.DATA.UserData;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,9 +16,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONObject;
 
@@ -26,12 +30,14 @@ public class LatLonMaps extends AppCompatActivity implements OnMapReadyCallback,
     private GoogleMap mMap;
     private MarkerOptions marker;
     private Context root;
+    private Marker marcador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         root = this;
 
         setContentView(R.layout.activity_lat_lon_maps);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,15 +54,27 @@ public class LatLonMaps extends AppCompatActivity implements OnMapReadyCallback,
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (marker != null) {
+                Toast.makeText(LatLonMaps.this,marcador.getPosition().toString(),Toast.LENGTH_LONG).show();
+
+                if (marcador != null) {
                     AsyncHttpClient client = new AsyncHttpClient();
-                   client.patch(DataApp.REST_HOME_PATCH + UserData.ID, new JsonHttpResponseHandler(){
+                    RequestParams params = new RequestParams();
+                    params.put("lat",marcador.getPosition().latitude);
+                    params.put("lon", marcador.getPosition().longitude);
+                   client.patch(DataApp.REST_HOME_PATCH + UserData.ID, params, new JsonHttpResponseHandler(){
+
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            Intent camera = new Intent(root, LoadImage.class);
-                            root.startActivity(camera);
+                            Intent formu = new Intent(root, MainActivity.class);
+                            root.startActivity(formu);
                         }
-                    });
+
+                       @Override
+                       public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                           super.onFailure(statusCode, headers, responseString, throwable);
+                       }
+                   });
+
                 }
             }
         });
@@ -82,8 +100,7 @@ public class LatLonMaps extends AppCompatActivity implements OnMapReadyCallback,
         marker.position(latLng);
         marker.title("Inmueble");
         marker.draggable(true);
-        mMap.addMarker(marker);
+         marcador=mMap.addMarker(marker);
     }
-
 
 }

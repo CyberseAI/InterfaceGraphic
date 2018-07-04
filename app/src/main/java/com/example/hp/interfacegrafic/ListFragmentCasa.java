@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.example.hp.interfacegrafic.ItemMenu.MenuBaseAdapter;
 import com.example.hp.interfacegrafic.Utils.OnLoadDataComplete;
@@ -66,10 +67,16 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
                         double lon = obj.getDouble("lon");
                         String correo = obj.getString("correo");
                         String id = obj.getString("_id");
-                        String url = DataApp.HOST + (String) obj.getJSONArray("gallery").get(0);
+                        //String url = DataApp.HOST + (String) obj.getJSONArray("gallery").get(0);
+                        JSONArray listGalery= obj.getJSONArray("gallery");
+                        ArrayList<String> urlLists = new ArrayList<String>();
+                        for (int j = 0; j < listGalery.length(); j++){
+                            urlLists.add(DataApp.HOST + listGalery.getString(j));
+                        }
+
                         DataApp.LISTDATA.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
                                 "", "", "", cantidadCuartos, cantidadBaños,
-                                "", "", lat, lon, correo, "", id, url));
+                                "", "", lat, lon, correo, "", id, urlLists));
                     }
                     LoadComponents();
                 } catch (JSONException e) {
@@ -97,8 +104,10 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         String datalist = DataApp.LISTDATA.get(position).getUrl();
+        //UserData.IDCasa = datalist;
         Intent intent = new Intent(this.getActivity(), ViewCasa.class);
-        intent.putExtra("url", datalist);
+        intent.putExtra("size", position);
+        intent.putExtra("id", datalist);
         this.getActivity().startActivity(intent);
 
     }

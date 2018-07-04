@@ -10,4 +10,6 @@
     <string name="title_activity_detalle__casa">Detalle_Casa</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_lat_lon_map_form">Map</string>
+
+    <string name="title_activity_galeria_img">GaleriaIMG</string>
 </resources>

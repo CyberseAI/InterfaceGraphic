@@ -2,6 +2,8 @@ package com.example.hp.interfacegrafic.ItemMenu;
 
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+
 public class ItemMenuStructure {
 
     private String tipo;
@@ -19,15 +21,15 @@ public class ItemMenuStructure {
     private double lon;
     private String correo;
     private String user;
-    private String id;
-    private Bitmap img;
+    private ArrayList<String> id;
+    private ArrayList<Bitmap> img;
     private String url;
 
     public ItemMenuStructure (String tipo, String esatado, String precio, String  ciudad, String region,
                               String ubicacion, String descripcion, String cantidadCuartos,
                               String cantidadBaños, String garage, String superficie,
                               double lat,double lon,String correo, String user,
-                              String urlimg, String id ) {
+                              String urlimg, ArrayList<String> id ) {
         this.tipo = tipo;
         this.estado = esatado;
         this.precio = precio;
@@ -175,19 +177,19 @@ public class ItemMenuStructure {
         this.url = url;
     }
 
-    public Bitmap getImg() {
+    public ArrayList<Bitmap> getImg() {
         return img;
     }
 
-    public void setImg(Bitmap img) {
+    public void setImg(ArrayList<Bitmap> img) {
         this.img = img;
     }
 
-    public String getId() {
+    public ArrayList<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ArrayList<String> id) {
         this.id = id;
     }
 }
