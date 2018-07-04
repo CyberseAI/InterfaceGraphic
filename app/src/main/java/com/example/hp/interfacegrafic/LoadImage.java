@@ -53,10 +53,13 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
     private String ABSOLUTE_PATH;
     private Context root;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         root = this;
+
 
         //userUrl= this.getIntent().getExtras().getString("id");
 
@@ -66,7 +69,11 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
         validarPermisos();
 
         loadComponents();
+
+
     }
+
+
 
     private boolean validarPermisos()
     {
@@ -92,6 +99,7 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
         photo.setOnClickListener(this);
 
         Button send = (Button)findViewById(R.id.sendbutton);
+        //Intent send1 = new Intent(this, LatLonMaps.class);
         send.setOnClickListener(this);
     }
 
@@ -142,7 +150,7 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
                                         String path = response.getString("path");
                                         if(path!=null)
                                         {
-                                            Intent profile = new Intent(root, MainActivity.class);
+                                            Intent profile = new Intent(root, LatLonMaps.class);
                                             root.startActivity(profile);
                                         }
                                     } catch (JSONException e) {

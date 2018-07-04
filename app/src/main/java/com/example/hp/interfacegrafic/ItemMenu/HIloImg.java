@@ -15,10 +15,8 @@ public class HIloImg extends AsyncTask <String, String, Bitmap> {
     private OnLoadCompleImg IMG;
     private ImageView imgC;
     public void setLoadImage (ImageView container, OnLoadCompleImg img){
-
         IMG = img;
         imgC = container;
-
     }
 
     @Override

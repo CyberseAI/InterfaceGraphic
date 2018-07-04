@@ -19,6 +19,7 @@ import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.example.hp.interfacegrafic.ItemMenu.LoaderImg;
 import com.example.hp.interfacegrafic.ItemMenu.OnLoadCompleImg;
 import com.example.hp.interfacegrafic.ItemMenu.UserDetalle;
+import com.google.android.gms.maps.MapsInitializer;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 

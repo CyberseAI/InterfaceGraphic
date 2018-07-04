@@ -29,7 +29,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         OnInfoWindowClickListener, View.OnClickListener, GoogleMap.OnMarkerClickListener{
     private View ROOT;
     private GoogleMap mMap;
-    private ListFragment lista;
 
     protected ArrayList<ItemMenuStructure> Data;
     @Override

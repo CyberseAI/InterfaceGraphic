@@ -36,11 +36,16 @@
         </activity>
         <activity android:name=".ViewCasa" />
         <activity android:name=".User" />
-        <activity android:name=".LoadImage"></activity>
+
+        <activity android:name=".LoadImage">
+
+        </activity>
         <activity android:name=".FormUser" />
         <activity android:name=".FormCasas" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MenuLogeado" />
+        <activity android:name=".LatLonMaps"
+            android:theme="@style/AppTheme.NoActionBar"/>
         //------------------------------------------------------------------------
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -79,6 +84,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
+
         <activity
             android:name=".GaleriaIMG"
             android:label="@string/title_activity_galeria_img"
