@@ -36,6 +36,7 @@ import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
 
+import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class LoadImage extends AppCompatActivity implements View.OnClickListener
@@ -59,21 +60,12 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         root = this;
-
-
-        //userUrl= this.getIntent().getExtras().getString("id");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_load_image);
 
         validarPermisos();
-
         loadComponents();
-
-
     }
-
-
 
     private boolean validarPermisos()
     {
@@ -81,12 +73,12 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
         {
             return true;
         }
-        if ((checkSelfPermission(Manifest.permission_group.CAMERA)== PackageManager.PERMISSION_GRANTED)&&
+        if ((checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED)&&
                 (checkSelfPermission(WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED))
         {
             return true;
         }
-        requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, Manifest.permission_group.CAMERA},100);
+        requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, CAMERA},100);
 
         return false;
     }
@@ -206,12 +198,10 @@ public class LoadImage extends AppCompatActivity implements View.OnClickListener
     {
         Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File file = createFile();
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Uri fileuri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", file);
             camera.putExtra(MediaStore.EXTRA_OUTPUT, fileuri);
-        }else
-        {
+        } else {
             camera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
         }
         startActivityForResult(camera, CAMERA_CODE);
