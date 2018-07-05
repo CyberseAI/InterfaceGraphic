@@ -3,6 +3,7 @@ package com.example.hp.interfacegrafic;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
 {
     private Context root;
+
     private Context btnInmueble;
+    private Context btnInmuebleId;
     GridLayout mainGrid ;
 
     private Context btnBuscar;
@@ -33,6 +36,27 @@ public class MainActivity extends AppCompatActivity
 
         btnInmueble = this;
         loadbtnInmueble();
+
+        btnInmuebleId = this;
+        loadIdInmueble ();
+    }
+
+    private void loadIdInmueble() {
+        Button btnB = (Button)this.findViewById(R.id.btnCasaUserid13);
+        btnB.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(root,"aqui esta ",Toast.LENGTH_SHORT).show();
+                FragmentManager fragment = getSupportFragmentManager();
+                //<<<
+                UserListaId casa = new UserListaId();
+
+                fragment.beginTransaction().add(R.id.contenedoruserCasaid,casa).commit();
+
+
+            }
+        });
     }
 
     private void loadbtnInmueble() {
