@@ -30,6 +30,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     private View ROOT;
     private GoogleMap mMap;
 
+    public String id;
+
     protected ArrayList<ItemMenuStructure> Data;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,8 +49,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
             for (int i = 0; i < DataApp.LISTDATA.size(); i++) {
                 LatLng position = new LatLng(DataApp.LISTDATA.get(i).getLat(), DataApp.LISTDATA.get(i).getLon());
                 MarkerOptions obj = new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getTipo());
-                String id = DataApp.LISTDATA.get(i).getUrl();
+
+                id = DataApp.LISTDATA.get(i).getUrl();
                 // en ves de gettipo se puedo poner getUrl que es la id para recuperar datos
+                //mMap.addMarker(obj).setTag(id);
                 mMap.addMarker(obj).setTag(id);
             }
 
@@ -102,10 +106,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     @Override
     public boolean onMarkerClick(Marker marker) {
         //enves de get tag se pone get titlepara recuperar la id
-        String id = getTag();
+        String id = marker.getTag().toString();
         LatLng ln = marker.getPosition();
         Intent intent = new Intent(this.getActivity(), ViewCasa.class);
         intent.putExtra("id", id);
+        intent.putExtra("size",ln);
         //intent.putExtra("size",ln);
         this.startActivity(intent);
         return false;

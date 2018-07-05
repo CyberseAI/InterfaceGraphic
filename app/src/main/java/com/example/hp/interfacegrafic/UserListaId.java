@@ -1,6 +1,7 @@
 package com.example.hp.interfacegrafic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -47,7 +48,7 @@ public class UserListaId extends Fragment implements AdapterView.OnItemClickList
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    JSONArray listData = response.getJSONArray("docs");
+                    JSONArray listData = response.getJSONArray("homes");
                     for (int i = 0; i < listData.length(); i++) {
                         JSONObject obj = listData.getJSONObject(i);
                         String tipo = obj.getString("tipo");
@@ -95,6 +96,14 @@ public class UserListaId extends Fragment implements AdapterView.OnItemClickList
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        String datalist = ListData.get(position).getUrl();
+        ArrayList<String> size = ListData.get(position).getId();
+        //UserData.IDCasa = datalist;
+        Intent intent = new Intent(this.getActivity(), PatchCasa.class);
+        intent.putExtra("size", size);
+        intent.putExtra("id", datalist);
+        this.getActivity().startActivity(intent);
 
     }
 }

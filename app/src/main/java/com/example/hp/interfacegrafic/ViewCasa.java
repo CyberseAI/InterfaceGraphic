@@ -58,15 +58,10 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         btnuserdatelle = this;
 
         btnG = this;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_casa);
         root = this;
         loadComponents();
-
-
-
-
 
         if (this.getIntent().getExtras() != null) {
             idCasa = this.getIntent().getExtras().getString("id");
@@ -86,8 +81,6 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 
     private void loadUserDetallecomponents()  {
         Button btnUser = (Button)this.findViewById(R.id.btnProp);
-
-
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
