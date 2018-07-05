@@ -92,7 +92,7 @@ public class FormCasas extends AppCompatActivity implements View.OnClickListener
         params.put("lon", lon.getText());
         params.put("correo",correo.getText());
 
-        client.post("http://192.168.43.150:7777/api/v1.0/inmuebles", params, new JsonHttpResponseHandler(){
+        client.post(DataApp.HOST+"/api/v1.0/inmuebles", params, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
