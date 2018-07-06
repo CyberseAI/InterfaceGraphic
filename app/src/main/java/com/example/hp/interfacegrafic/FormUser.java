@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -42,6 +43,9 @@ public class FormUser extends AppCompatActivity
     HttpClient cliente;
     HttpPost post;
     List<NameValuePair> lista;
+
+
+    private GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

@@ -206,7 +206,7 @@
     <Button
         android:id="@+id/btnUbic"
         android:layout_width="138dp"
-        android:layout_height="42dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
@@ -218,24 +218,24 @@
         app:layout_constraintEnd_toStartOf="@+id/btnProp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edidtexthabitaciones12"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnProp"
         android:layout_width="168dp"
-        android:layout_height="42dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/bacground_btn"
         android:fontFamily="cursive"
         android:text="ACTUALIZAR PERFIL"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edidtexthabitaciones12"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <Button
@@ -247,13 +247,13 @@
         android:background="@drawable/bacground_btn"
         android:fontFamily="cursive"
         android:text="ver imagenes"
-        android:textColor="#f4df95"
+        android:textColor="#f9f6ea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edidTexDescripcion12"
-        android:layout_width="351dp"
+        android:layout_width="345dp"
         android:layout_height="64dp"
         android:layout_margin="0dp"
         android:layout_marginEnd="12dp"
@@ -290,14 +290,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="162dp"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/bacground_btn"
         android:fontFamily="cursive"
         android:gravity="center_vertical|center"
         android:text="Actualizar"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12" />
 
