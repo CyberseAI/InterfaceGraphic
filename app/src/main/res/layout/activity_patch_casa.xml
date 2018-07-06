@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/edidtextTipo12"
         android:layout_width="250dp"
-        android:layout_height="35dp"
+        android:layout_height="33dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="11dp"
         android:gravity="bottom|center"
@@ -21,7 +21,7 @@
     <EditText
         android:id="@+id/edidtextEstado12"
         android:layout_width="250dp"
-        android:layout_height="20dp"
+        android:layout_height="31dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="7dp"
         android:gravity="bottom|center"
@@ -33,7 +33,7 @@
     <EditText
         android:id="@+id/edidtextRegion12"
         android:layout_width="250dp"
-        android:layout_height="20dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="7dp"
         android:gravity="bottom|center"
@@ -241,7 +241,7 @@
     <EditText
         android:id="@+id/edidtextTamaño12"
         android:layout_width="250dp"
-        android:layout_height="20dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="6dp"
         android:gravity="bottom|center"
@@ -256,10 +256,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="162dp"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Actualizar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12" />
 
