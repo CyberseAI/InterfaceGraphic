@@ -88,6 +88,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Estado:"
+        android:fontFamily="cursive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 

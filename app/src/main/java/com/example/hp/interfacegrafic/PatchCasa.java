@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.CasaIdDeatalle;
 import com.example.hp.interfacegrafic.ItemMenu.OnLoadCompleImg;
 import com.loopj.android.http.AsyncHttpClient;
@@ -286,9 +287,9 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         btnGaller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ///para sacar el usria id
+                String id = Data.getUrl().get(0);
                 Intent iduser = new Intent(btnG, GaleriaIMG.class);
-                iduser.putExtra("id",size);
+                iduser.putExtra("id",id);
                 btnG.startActivity(iduser);
             }
         });
@@ -301,7 +302,9 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent map = new Intent(root, MapsFragment.class);
+                String idm = Data.getId();
+                UserData.ID = idm;
+                Intent map = new Intent(root, LatLonMaps.class);
 
                 root.startActivity(map);
             }
