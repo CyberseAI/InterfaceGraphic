@@ -54,7 +54,7 @@ public class VerUbica extends AppCompatActivity implements OnMapReadyCallback, G
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,13 +81,14 @@ public class VerUbica extends AppCompatActivity implements OnMapReadyCallback, G
 
                 }
             }
-        });
+        });*/
     }
 
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Toast.makeText(VerUbica.this,marcador.getPosition().toString(),Toast.LENGTH_LONG).show();
         mMap = googleMap;
         Intent intentMap=getIntent();
         LatLng detallePosCasa=new LatLng(

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.example.hp.interfacegrafic.DATA.DataApp;
 import com.example.hp.interfacegrafic.Utils.OnLoadDataComplete;
 
 public class Casa_mapas extends AppCompatActivity {
@@ -113,6 +114,7 @@ public class Casa_mapas extends AppCompatActivity {
                 return  lista;
             }
             if (position ==1){
+
                 return maps;
             }
             return lista;

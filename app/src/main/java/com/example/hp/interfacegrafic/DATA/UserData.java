@@ -4,5 +4,6 @@ public class UserData {
 
     static public String ID;
     static public String IDCasa;
+    static public String IDcasam;
 
 }

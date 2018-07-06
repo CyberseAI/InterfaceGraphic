@@ -1,5 +1,7 @@
 package com.example.hp.interfacegrafic;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,18 +12,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.UserData;
+import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback {
+import java.util.ArrayList;
+
+public class MapsFragment extends Fragment implements OnMapReadyCallback, GoogleMap.
+        OnInfoWindowClickListener, View.OnClickListener, GoogleMap.OnMarkerClickListener{
     private View ROOT;
     private GoogleMap mMap;
-    private ListFragmentCasa lista;
+
+    public String id;
+
+    protected ArrayList<ItemMenuStructure> Data;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +44,19 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         return ROOT;
         //return super.onCreateView(inflater, container, savedInstanceState);
     }
-   public void setListFragment() {
+   public void setListFragment()  {
         if (DataApp.LISTDATA != null && DataApp.LISTDATA.size() > 0) {
             for (int i = 0; i < DataApp.LISTDATA.size(); i++) {
                 LatLng position = new LatLng(DataApp.LISTDATA.get(i).getLat(), DataApp.LISTDATA.get(i).getLon());
-                mMap.addMarker(new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getUbicacion()));
+                MarkerOptions obj = new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getTipo());
 
+                id = DataApp.LISTDATA.get(i).getUrl();
+                // en ves de gettipo se puedo poner getUrl que es la id para recuperar datos
+                //mMap.addMarker(obj).setTag(id);
+                mMap.addMarker(obj).setTag(id);
             }
+
+            mMap.setOnMarkerClickListener(this);
         }
     }
     @Override
@@ -51,6 +68,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             map.onResume();
             // Set the map ready callback to receive the GoogleMap object
             map.getMapAsync(this);
+
         }
 
     }
@@ -63,5 +81,38 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         LatLng potosi = new LatLng(-19.578297, -65.758633);
         mMap.addMarker(new MarkerOptions().position(potosi).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(potosi, 14));
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+
+        if (marker.equals(mMap)){
+
+            Intent intent = new Intent(this.getActivity(), ViewCasa.class);
+            this.getActivity().startActivity(intent);
+
+        }
+        //Intent intent = new Intent(this.getActivity(), ViewCasa.class);
+        //this.getActivity().startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+
+
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        //enves de get tag se pone get titlepara recuperar la id
+        String id = marker.getTag().toString();
+        LatLng ln = marker.getPosition();
+        Intent intent = new Intent(this.getActivity(), ViewCasa.class);
+        intent.putExtra("id", id);
+        intent.putExtra("size",ln);
+        //intent.putExtra("size",ln);
+        this.startActivity(intent);
+        return false;
     }
 }

@@ -49,7 +49,11 @@ public class User extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        userUrl = this.getIntent().getExtras().getString("user");
+        if (this.getIntent().getExtras() != null) {
+
+            userUrl = this.getIntent().getExtras().getString("user");
+        }
+
         loadViewComponents();
         loadAsinkData();
 

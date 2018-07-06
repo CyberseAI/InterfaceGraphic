@@ -7,8 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     //**********************************************************************************
 
     <!--
@@ -25,22 +24,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".load_scream"></activity>
+        <activity android:name=".load_scream">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ViewCasa" />
         <activity android:name=".User" />
-
-        <activity android:name=".LoadImage">
-
-        </activity>
+        <activity android:name=".LoadImage"></activity>
         <activity android:name=".FormUser" />
         <activity android:name=".FormCasas" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MenuLogeado" />
+
         <activity android:name=".LatLonMaps"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".VerUbica"
             android:theme="@style/AppTheme.NoActionBar"/>
-        //------------------------------------------------------------------------
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="$(applicationId).provider"
@@ -52,14 +55,7 @@
         </provider>
 
         <activity android:name=".Web" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".Casa_mapas"
             android:label="@string/title_activity_casa_mapas"
@@ -83,11 +79,11 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-
         <activity
             android:name=".GaleriaIMG"
             android:label="@string/title_activity_galeria_img"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PatchCasa"></activity>
     </application>
 
 </manifest>
