@@ -95,6 +95,8 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         });
 
     }
+    private String lat;
+    private String lon;
 
     private void loadAsinkData() {
         AsyncHttpClient casadetalle= new AsyncHttpClient();
@@ -110,6 +112,8 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
                                 String cantidadCuartos = response.getString("cantidadCuartos");
                                 String superficie = response.getString("superficie");
                                 String user = response.getString("user");
+                                String lat=response.getString("lat");
+                                String lon=response.getString("lon");
                                 String id = response.getString("_id");
                                 //String url = DataApp.HOST + (String)response.getJSONArray("gallery").get(0);
                                 JSONArray listGalery= response.getJSONArray("gallery");
@@ -172,7 +176,9 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent map = new Intent(root, MapsFragment.class);
+                Intent map = new Intent(root, VerUbica.class);
+                map.putExtra("lat",lat);
+                map.putExtra("lon",lon);
                 root.startActivity(map);
             }
         });

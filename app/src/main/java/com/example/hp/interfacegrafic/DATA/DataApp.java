@@ -13,4 +13,5 @@ public class DataApp {
     static public String inmueble_id = HOST + "/api/v1.0/inmuebles_id";
     static public String  user_id = HOST + "/api/v1.0/user";
     static public String REST_HOME_PATCH = HOST + "/api/v1.0/inmuebles/";
+
 }
