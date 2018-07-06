@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
@@ -104,7 +105,14 @@ public class MenuLogeado extends AppCompatActivity implements GoogleApiClient.On
                                                              break;
                                                          case 1:
                                                              Toast.makeText(MenuLogeado.this, "Revisar "+arrayname[index], Toast.LENGTH_SHORT).show();
-                                                             startActivity(new Intent(MenuLogeado.this, UserListaId.class));
+
+                                                             FragmentManager fragment = getSupportFragmentManager();
+                                                             //<<<
+                                                             UserListaId casa = new UserListaId();
+
+                                                             fragment.beginTransaction().add(R.id.contenedorusarlistacasa321,casa).commit();
+
+                                                             //startActivity(new Intent(MenuLogeado.this, UserListaId.class));
                                                              break;
                                                          case 2:
                                                              Toast.makeText(MenuLogeado.this, "Deseas "+arrayname[index], Toast.LENGTH_SHORT).show();

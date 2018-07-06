@@ -47,7 +47,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
 
     private Context btnG; // para el boton de gallery
 
-    public ArrayList<String> size; //este es el cantidad imagenes
+    public static int size; //este es el cantidad imagenes
     public  String idCasa;   //id de la casa
     //public  String idMapa; ///recuperando id desde mapas
 
@@ -77,9 +77,8 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         setContentView(R.layout.activity_patch_casa);
 
         if (this.getIntent().getExtras() != null) {
+            size = this.getIntent().getExtras().getInt("size");
             idCasa = this.getIntent().getExtras().getString("id");
-            size = this.getIntent().getExtras().getStringArrayList("size");
-
         }
         loadComponents();
 
@@ -287,9 +286,9 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         btnGaller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = Data.getUrl().get(0);
+                //String id = Data.getUrl().get(0);
                 Intent iduser = new Intent(btnG, GaleriaIMG.class);
-                iduser.putExtra("id",id);
+                iduser.putExtra("id",size);
                 btnG.startActivity(iduser);
             }
         });
