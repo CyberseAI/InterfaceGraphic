@@ -13,6 +13,12 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity
 {
     private Context root;
@@ -25,8 +31,11 @@ public class MainActivity extends AppCompatActivity
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        checkSessionFile();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         root=this;
         loadComponents();
@@ -57,6 +66,33 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+    }
+
+    private Boolean checkSessionFile() {
+        try {
+            InputStream inputstream = this.openFileInput("sessionapp.txt");
+            if (inputstream != null) {
+                InputStreamReader inputstreamreader = new InputStreamReader(inputstream);
+                BufferedReader bufferreader = new BufferedReader(inputstreamreader);
+                String recive = "";
+                StringBuilder cad = new StringBuilder();
+                while ((recive = bufferreader.readLine()) != null ) {
+                    cad.append(recive);
+                }
+                String[] resultado =  cad.toString().split("-");
+                Intent p = new Intent(this, MenuLogeado.class);
+                p.putExtra("name", resultado[0]);
+                p.putExtra("email", resultado[1]);
+                p.putExtra("id", resultado[2]);
+                this.startActivity(p);
+
+            }
+            return true;
+        } catch (FileNotFoundException e) {
+            return false;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     private void loadbtnInmueble() {
