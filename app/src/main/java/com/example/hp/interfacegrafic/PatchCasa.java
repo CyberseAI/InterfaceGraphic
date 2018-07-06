@@ -99,7 +99,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
             @Override
             public void onClick(View v) {
                 String userUrl = Data.getUser().toString(); ///para sacar el usria id
-                Intent user = new Intent(btnuserdatelle, User.class);
+                Intent user = new Intent(btnuserdatelle, PatchUser.class);
                 user.putExtra("user",userUrl);
                 btnuserdatelle.startActivity(user);
             }

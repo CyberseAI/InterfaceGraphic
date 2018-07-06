@@ -33,7 +33,7 @@
         </activity>
         <activity android:name=".ViewCasa" />
         <activity android:name=".User" />
-        <activity android:name=".LoadImage"></activity>
+        <activity android:name=".LoadImage" />
         <activity android:name=".FormUser" />
         <activity android:name=".FormCasas" />
         <activity android:name=".LoginActivity" />
@@ -53,7 +53,7 @@
         </provider>
 
         <activity android:name=".Web" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".Casa_mapas"
             android:label="@string/title_activity_casa_mapas"
@@ -81,7 +81,8 @@
             android:name=".GaleriaIMG"
             android:label="@string/title_activity_galeria_img"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PatchCasa"></activity>
+        <activity android:name=".PatchCasa" />
+        <activity android:name=".PatchUser"></activity>
     </application>
 
 </manifest>

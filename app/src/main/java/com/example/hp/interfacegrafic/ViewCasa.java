@@ -65,6 +65,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 
         if (this.getIntent().getExtras() != null) {
             idCasa = this.getIntent().getExtras().getString("id");
+
             size = this.getIntent().getExtras().getInt("size");
             //idMapa = this.getIntent().getExtras().getString("id");
         }
@@ -189,7 +190,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
             public void onClick(View v) {
                  ///para sacar el usria id
                 Intent iduser = new Intent(btnG, GaleriaIMG.class);
-                iduser.putExtra("id",size);
+                iduser.putExtra("id", size);
                 btnG.startActivity(iduser);
             }
         });
