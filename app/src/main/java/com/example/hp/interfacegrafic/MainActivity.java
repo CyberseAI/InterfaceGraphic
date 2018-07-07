@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity
         loadBtnBuscar();
 
         btnInmueble = this;
-        loadbtnInmueble();
+       // loadbtnInmueble();
 
         btnInmuebleId = this;
-        loadIdInmueble ();
+        //loadIdInmueble ();
     }
 
-    private void loadIdInmueble() {
+   /* private void loadIdInmueble() {
         Button btnB = (Button)this.findViewById(R.id.btnCasaUserid13);
         btnB.setOnClickListener(new View.OnClickListener(){
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-    }
+    }*/
 
     private Boolean checkSessionFile() {
         try {
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void loadbtnInmueble() {
+    /*private void loadbtnInmueble() {
         Button btnI = (Button)this.findViewById(R.id.btnInmuebleAdd);
         btnI.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity
                 btnInmueble.startActivity(login);
             }
         });
-    }
+    }*/
 
     private void loadBtnBuscar() {
 
