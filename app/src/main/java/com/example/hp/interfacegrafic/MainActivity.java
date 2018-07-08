@@ -8,10 +8,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.hp.interfacegrafic.DATA.UserData;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -23,9 +28,15 @@ public class MainActivity extends AppCompatActivity
 {
     private Context root;
 
-    private Context btnInmueble;
-    private Context btnInmuebleId;
+    //private Context btnInmueble;
+    //private Context btnInmuebleId;
     GridLayout mainGrid ;
+    Spinner filtroEstado;
+    Spinner filtroTipo;
+    public String valor;
+    public String valor2;
+
+    private  Context bntFiltro;
 
     private Context btnBuscar;
     @SuppressLint("WrongViewCast")
@@ -34,7 +45,45 @@ public class MainActivity extends AppCompatActivity
         checkSessionFile();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        root=this;
+        filtroTipo =(Spinner) findViewById(R.id.spinnerCasaTipos);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tipos,
+                    android.R.layout.simple_spinner_item);
+        filtroTipo.setAdapter(adapter);
+        filtroTipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                 valor = parent.getItemAtPosition(position).toString();
+                 loadFiltroComponents(valor);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        filtroEstado =(Spinner) findViewById(R.id.spinnerCasaEstado);
+        ArrayAdapter<CharSequence> adapterEstado = ArrayAdapter.createFromResource(this,R.array.estado,
+                android.R.layout.simple_spinner_item);
+        filtroEstado.setAdapter(adapterEstado);
+        filtroEstado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                valor2 = parent.getItemAtPosition(position).toString();
+                UserData.FEstado = valor2;
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         root=this;
@@ -43,11 +92,31 @@ public class MainActivity extends AppCompatActivity
         btnBuscar = this;
         loadBtnBuscar();
 
-        btnInmueble = this;
+        bntFiltro = this;
+
+
+        //btnInmueble = this;
        // loadbtnInmueble();
 
-        btnInmuebleId = this;
+        //btnInmuebleId = this;
         //loadIdInmueble ();
+    }
+
+    private void loadFiltroComponents(final String valor) {
+        final String val=valor;
+        UserData.FTipo = val;
+        Button btnMAs = (Button)this.findViewById(R.id.button5);
+        btnMAs.setOnClickListener(new View.OnClickListener(){
+
+           @Override
+            public void onClick(View v) {
+               Intent ubic = new Intent(bntFiltro, Filtro_casas.class);
+               //ubic.putExtra("tipo",va);
+               bntFiltro.startActivity(ubic);
+
+            }
+        });
+
     }
 
    /* private void loadIdInmueble() {
