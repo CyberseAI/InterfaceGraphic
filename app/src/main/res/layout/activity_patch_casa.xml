@@ -4,18 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/jascuadrado"
     tools:context=".PatchCasa">
 
     <EditText
         android:id="@+id/edidtextTipo12"
         android:layout_width="250dp"
-        android:layout_height="35dp"
+        android:layout_height="20dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/colores_txt"
         android:gravity="bottom|center"
         android:text="alejandro"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
@@ -23,11 +28,15 @@
         android:layout_width="250dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/colores_txt"
         android:gravity="bottom|center"
         android:text="alejandro"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/edidtextTipo12" />
 
     <EditText
@@ -35,23 +44,31 @@
         android:layout_width="250dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/colores_txt"
         android:gravity="bottom|center"
         android:text="alejandro"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/edidtextTamaño12" />
 
     <EditText
         android:id="@+id/edidtextprecio12"
         android:layout_width="250dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/colores_txt"
         android:gravity="bottom|center"
         android:text="alejandro"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/edidtexthabitaciones12" />
 
     <EditText
@@ -59,11 +76,15 @@
         android:layout_width="250dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/colores_txt"
         android:gravity="bottom|center"
         android:text="alejandro"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/edidtextRegion12" />
 
     <TextView
@@ -71,12 +92,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Galería de Imagen"
-        android:textStyle="bold"
-        android:textSize="20dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="cursive"
+        android:text="Galería de Imagen"
         android:textColor="#0F48F0"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,12 +115,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="112dp"
-        android:text="Descripción"
-        android:textStyle="bold"
-        android:textSize="20dp"
+        android:layout_marginTop="72dp"
         android:fontFamily="cursive"
+        android:text="Descripción"
         android:textColor="#0F48F0"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtView_apellido" />
 
@@ -108,7 +129,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
         android:fontFamily="cursive"
         android:text="Datos del Inmueble"
         android:textColor="#0F48F0"
@@ -123,8 +143,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="11dp"
-        android:text="Tipo:"
         android:fontFamily="cursive"
+        android:text="Tipo:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -133,7 +153,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="cursive"
         android:text="Estado:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -143,9 +164,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
-        android:text="Tamaño:"
+        android:layout_marginTop="16dp"
         android:fontFamily="cursive"
+        android:text="Tamaño:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -154,9 +175,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Region:"
+        android:layout_marginTop="16dp"
         android:fontFamily="cursive"
+        android:text="Region:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -165,9 +186,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Cant de Hab:"
+        android:layout_marginTop="16dp"
         android:fontFamily="cursive"
+        android:text="Cant de Hab:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -176,61 +197,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Precio:"
+        android:layout_marginTop="16dp"
         android:fontFamily="cursive"
+        android:text="Precio:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
         android:id="@+id/btnUbic"
-        android:layout_width="135dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="138dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
         android:background="@drawable/bacground_btn"
-        android:text="Ver Ubicación"
-        android:textColor="#FFFFFF"
         android:fontFamily="cursive"
+        android:text="aCTUALIZAR Ubicación"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/btnProp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnProp"
         android:layout_width="168dp"
-        android:layout_height="42dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/bacground_btn"
-        android:text="Perfil Propietario"
-        android:textColor="#FFFFFF"
         android:fontFamily="cursive"
+        android:text="ACTUALIZAR PERFIL"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <Button
         android:id="@+id/btnGalleryPacht"
         android:layout_width="129dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/bacground_btn"
-        android:text="ver imagenes"
-        android:textColor="#f4df95"
         android:fontFamily="cursive"
+        android:text="ver imagenes"
+        android:textColor="#f9f6ea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edidTexDescripcion12"
-        android:layout_width="383dp"
-        android:layout_height="55dp"
+        android:layout_width="345dp"
+        android:layout_height="64dp"
         android:layout_margin="0dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="28dp"
+        android:background="@drawable/colores_txt"
         android:ems="10"
-        android:gravity="bottom|center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
         android:inputType="textPersonName"
         android:text="Name"
         android:textSize="15dp"
@@ -243,11 +273,15 @@
         android:layout_width="250dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/colores_txt"
         android:gravity="bottom|center"
         android:text="alejandro"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/edidtextEstado12" />
 
     <Button
@@ -256,10 +290,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="162dp"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bacground_btn"
+        android:fontFamily="cursive"
+        android:gravity="center_vertical|center"
         android:text="Actualizar"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12" />
 

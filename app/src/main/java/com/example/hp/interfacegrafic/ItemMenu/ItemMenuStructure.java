@@ -21,9 +21,9 @@ public class ItemMenuStructure {
     private double lon;
     private String correo;
     private String user;
-    private ArrayList<String> id;
+    private ArrayList<String> id; //url
     private ArrayList<Bitmap> img;
-    private String url;
+    private String url;//id
 
     public ItemMenuStructure (String tipo, String esatado, String precio, String  ciudad, String region,
                               String ubicacion, String descripcion, String cantidadCuartos,

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
 import com.example.hp.interfacegrafic.DATA.UserData;
@@ -65,6 +66,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 
         if (this.getIntent().getExtras() != null) {
             idCasa = this.getIntent().getExtras().getString("id");
+
             size = this.getIntent().getExtras().getInt("size");
             //idMapa = this.getIntent().getExtras().getString("id");
         }
@@ -113,8 +115,8 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
                                 String cantidadCuartos = response.getString("cantidadCuartos");
                                 String superficie = response.getString("superficie");
                                 String user = response.getString("user");
-                                String lat=response.getString("lat");
-                                String lon=response.getString("lon");
+                                Number lon = response.getDouble("lat");
+                                Number lat = response.getDouble("lon");
                                 String id = response.getString("_id");
                                 //String url = DataApp.HOST + (String)response.getJSONArray("gallery").get(0);
                                 JSONArray listGalery= response.getJSONArray("gallery");
@@ -123,7 +125,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
                                     urlLists.add(DataApp.HOST + listGalery.getString(j));
                                 }
                                 Data = new CasaIdDeatalle(tipo, esatado,precio,region,descripcion,
-                                        cantidadCuartos,superficie,user,id,urlLists);
+                                        cantidadCuartos,superficie,user,lat,lon,id,urlLists);
                                 ROOT.informacion();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -177,9 +179,10 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(root,Data.getLat()+" "+Data.getLon(),Toast.LENGTH_LONG).show();
                 Intent map = new Intent(root, VerUbica.class);
-                map.putExtra("lat",lat);
-                map.putExtra("lon",lon);
+                map.putExtra("lat",Data.getLat());
+                map.putExtra("lon",Data.getLon());
                 root.startActivity(map);
             }
         });
@@ -194,7 +197,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
             public void onClick(View v) {
                  ///para sacar el usria id
                 Intent iduser = new Intent(btnG, GaleriaIMG.class);
-                iduser.putExtra("id",size);
+                iduser.putExtra("id", size);
                 btnG.startActivity(iduser);
             }
         });

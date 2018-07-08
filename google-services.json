@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "359419682618",
+    "firebase_url": "https://reivin-e186a.firebaseio.com",
+    "project_id": "reivin-e186a",
+    "storage_bucket": "reivin-e186a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359419682618:android:3190317bad57eda4",
+        "android_client_info": {
+          "package_name": "com.example.hp.interfacegrafic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359419682618-v4nff984tvl0tcvucvnbsellk7jh03ji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hp.interfacegrafic",
+            "certificate_hash": "a00bf992dc4ca41e3827e180e9a3e67f05fbb3a2"
+          }
+        },
+        {
+          "client_id": "359419682618-0kj4jv742iul7jrdh2r9v9ncurk0sq1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRrJ1dUCF1Pt8tYiSuRSgrDu_Z2_3qSzA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359419682618-0kj4jv742iul7jrdh2r9v9ncurk0sq1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

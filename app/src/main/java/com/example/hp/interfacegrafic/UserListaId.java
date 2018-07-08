@@ -35,6 +35,7 @@ public class UserListaId extends Fragment implements AdapterView.OnItemClickList
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        DataApp.LISTDATA = new ArrayList<ItemMenuStructure>();
         ListData= new ArrayList<ItemMenuStructure>();
         ROOT = inflater.inflate(R.layout.fragment_user_lista_id, container, false);
         loadData();
@@ -68,7 +69,7 @@ public class UserListaId extends Fragment implements AdapterView.OnItemClickList
                             urlLists.add(DataApp.HOST + listGalery.getString(j));
                         }
 
-                        ListData.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
+                        DataApp.LISTDATA.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
                                 "", "", "", cantidadCuartos, cantidadBaños,
                                 "", "", lat, lon, correo, "", id, urlLists));
                     }
@@ -87,7 +88,7 @@ public class UserListaId extends Fragment implements AdapterView.OnItemClickList
     private void LoadComponents() {
 
         ListView list = (ListView) ROOT.findViewById(R.id.listaCasasIdcontenedor);
-        MenuBasaeAdapterUserCasaId adapter = new MenuBasaeAdapterUserCasaId(this.getActivity(), ListData);
+        MenuBasaeAdapterUserCasaId adapter = new MenuBasaeAdapterUserCasaId(this.getActivity(), DataApp.LISTDATA);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(this);
@@ -97,11 +98,11 @@ public class UserListaId extends Fragment implements AdapterView.OnItemClickList
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        String datalist = ListData.get(position).getUrl();
-        ArrayList<String> size = ListData.get(position).getId();
+        String datalist = DataApp.LISTDATA.get(position).getUrl();
+        //ArrayList<String> size = DataApp.LISTDATA.get(position);
         //UserData.IDCasa = datalist;
         Intent intent = new Intent(this.getActivity(), PatchCasa.class);
-        intent.putExtra("size", size);
+        intent.putExtra("size", position);
         intent.putExtra("id", datalist);
         this.getActivity().startActivity(intent);
 

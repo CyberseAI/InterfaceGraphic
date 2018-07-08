@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.CasaIdDeatalle;
 import com.example.hp.interfacegrafic.ItemMenu.OnLoadCompleImg;
 import com.loopj.android.http.AsyncHttpClient;
@@ -46,7 +47,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
 
     private Context btnG; // para el boton de gallery
 
-    public ArrayList<String> size; //este es el cantidad imagenes
+    public static int size; //este es el cantidad imagenes
     public  String idCasa;   //id de la casa
     //public  String idMapa; ///recuperando id desde mapas
 
@@ -76,9 +77,8 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         setContentView(R.layout.activity_patch_casa);
 
         if (this.getIntent().getExtras() != null) {
+            size = this.getIntent().getExtras().getInt("size");
             idCasa = this.getIntent().getExtras().getString("id");
-            size = this.getIntent().getExtras().getStringArrayList("size");
-
         }
         loadComponents();
 
@@ -98,7 +98,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
             @Override
             public void onClick(View v) {
                 String userUrl = Data.getUser().toString(); ///para sacar el usria id
-                Intent user = new Intent(btnuserdatelle, User.class);
+                Intent user = new Intent(btnuserdatelle, PatchUser.class);
                 user.putExtra("user",userUrl);
                 btnuserdatelle.startActivity(user);
             }
@@ -120,6 +120,8 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
                             String cantidadCuartos = response.getString("cantidadCuartos");
                             String superficie = response.getString("superficie");
                             String user = response.getString("user");
+                            Number lat = response.getDouble("lat");
+                            Number lon = response.getDouble("lon");
                             String id = response.getString("_id");
                             //String url = DataApp.HOST + (String)response.getJSONArray("gallery").get(0);
                             JSONArray listGalery= response.getJSONArray("gallery");
@@ -128,7 +130,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
                                 urlLists.add(DataApp.HOST + listGalery.getString(j));
                             }
                             Data = new CasaIdDeatalle(tipo, esatado,precio,region,descripcion,
-                                    cantidadCuartos,superficie,user,id,urlLists);
+                                    cantidadCuartos,superficie,user,lat,lon,id,urlLists);
                             ROOT.informacion();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -286,7 +288,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         btnGaller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ///para sacar el usria id
+                //String id = Data.getUrl().get(0);
                 Intent iduser = new Intent(btnG, GaleriaIMG.class);
                 iduser.putExtra("id",size);
                 btnG.startActivity(iduser);
@@ -301,7 +303,9 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent map = new Intent(root, MapsFragment.class);
+                String idm = Data.getId();
+                UserData.ID = idm;
+                Intent map = new Intent(root, LatLonMaps.class);
 
                 root.startActivity(map);
             }

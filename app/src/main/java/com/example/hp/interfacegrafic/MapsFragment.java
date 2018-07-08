@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.DATA.DataStructureMark;
 import com.example.hp.interfacegrafic.DATA.UserData;
 import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -53,7 +54,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 id = DataApp.LISTDATA.get(i).getUrl();
                 // en ves de gettipo se puedo poner getUrl que es la id para recuperar datos
                 //mMap.addMarker(obj).setTag(id);
-                mMap.addMarker(obj).setTag(id);
+                DataStructureMark markk = new DataStructureMark();
+                markk.id = id;
+                markk.position = i;
+                mMap.addMarker(obj).setTag(markk);
+
             }
 
             mMap.setOnMarkerClickListener(this);
@@ -106,11 +111,12 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     @Override
     public boolean onMarkerClick(Marker marker) {
         //enves de get tag se pone get titlepara recuperar la id
-        String id = marker.getTag().toString();
+        DataStructureMark sender = (DataStructureMark)marker.getTag();
+
         LatLng ln = marker.getPosition();
         Intent intent = new Intent(this.getActivity(), ViewCasa.class);
-        intent.putExtra("id", id);
-        intent.putExtra("size",ln);
+        intent.putExtra("id", sender.id);
+        intent.putExtra("size",sender.position);
         //intent.putExtra("size",ln);
         this.startActivity(intent);
         return false;
