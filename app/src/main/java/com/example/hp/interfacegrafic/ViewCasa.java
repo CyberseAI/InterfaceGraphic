@@ -19,6 +19,7 @@ import com.example.hp.interfacegrafic.ItemMenu.ItemMenuStructure;
 import com.example.hp.interfacegrafic.ItemMenu.LoaderImg;
 import com.example.hp.interfacegrafic.ItemMenu.OnLoadCompleImg;
 import com.example.hp.interfacegrafic.ItemMenu.UserDetalle;
+import com.example.hp.interfacegrafic.Mapas.MapsUbicUser;
 import com.google.android.gms.maps.MapsInitializer;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -113,6 +114,8 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
                                 String superficie = response.getString("superficie");
                                 String user = response.getString("user");
                                 String id = response.getString("_id");
+                                Number lat = response.getDouble("lat");
+                                Number lon = response.getDouble("lon");
                                 //String url = DataApp.HOST + (String)response.getJSONArray("gallery").get(0);
                                 JSONArray listGalery= response.getJSONArray("gallery");
                                 ArrayList<String> urlLists = new ArrayList<String>();
@@ -120,7 +123,7 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
                                     urlLists.add(DataApp.HOST + listGalery.getString(j));
                                 }
                                 Data = new CasaIdDeatalle(tipo, esatado,precio,region,descripcion,
-                                        cantidadCuartos,superficie,user,id,urlLists);
+                                        cantidadCuartos,superficie,user,id,lat,lon,urlLists);
                                 ROOT.informacion();
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -168,14 +171,19 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
 
     }
 
-    private void loadComponents()
+    public void loadComponents()
     {
         Button btnMap = (Button)this.findViewById(R.id.btnUbic);
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent map = new Intent(root, MapsFragment.class);
-
+                Double lat = (Double) Data.getLat();
+                Double lon = (Double) Data.getLon();
+                String tipo = Data.getTipo();
+                Intent map = new Intent(root, MapsUbicUser.class);
+                map.putExtra("lat",lat);
+                map.putExtra("lon",lon);
+                map.putExtra("tipo",tipo);
                 root.startActivity(map);
             }
         });

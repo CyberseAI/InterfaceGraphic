@@ -3,6 +3,7 @@ package com.example.hp.interfacegrafic.Mapas;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.example.hp.interfacegrafic.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -13,6 +14,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsUbicUser extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    public static Double lat;
+    public static Double lon;
+    private String tipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,14 @@ public class MapsUbicUser extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        if (this.getIntent().getExtras() != null) {
+
+            lat = this.getIntent().getExtras().getDouble("lat");
+            lon = this.getIntent().getExtras().getDouble("lon");
+            tipo = this.getIntent().getExtras().getString("tipo");
+
+        }
     }
 
 
@@ -36,11 +48,13 @@ public class MapsUbicUser extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Double Latitude = lat;
+        Double longitude = lon;
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng potosi = new LatLng(Latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(potosi).title(tipo));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(potosi, 14));
     }
 }

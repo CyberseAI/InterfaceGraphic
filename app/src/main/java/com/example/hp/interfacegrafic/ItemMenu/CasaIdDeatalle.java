@@ -15,6 +15,8 @@ public class CasaIdDeatalle {
     private String superficie;
     private String user;
     private String id;
+    private Number lat;
+    private Number lon;
     private ArrayList<String> url;
     private ArrayList<Bitmap> img;
 
@@ -28,6 +30,8 @@ public class CasaIdDeatalle {
                            String superficie,
                            String user,
                            String id,
+                           Number lat,
+                           Number lon,
                            ArrayList<String> url){
 
         this.tipo = tipo;
@@ -39,7 +43,25 @@ public class CasaIdDeatalle {
         this.superficie = superficie;
         this.user = user;
         this.id = id;
+        this.lat = lat;
+        this.lon = lon;
         this.url = url;
+    }
+
+    public Number getLat() {
+        return lat;
+    }
+
+    public void setLat(Number lat) {
+        this.lat = lat;
+    }
+
+    public Number getLon() {
+        return lon;
+    }
+
+    public void setLon(Number lon) {
+        this.lon = lon;
     }
 
     public String getTipo() {

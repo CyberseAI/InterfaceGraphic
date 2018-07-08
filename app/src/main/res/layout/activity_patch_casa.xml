@@ -8,38 +8,6 @@
     tools:context=".PatchCasa">
 
     <EditText
-        android:id="@+id/edidtextTipo12"
-        android:layout_width="250dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/colores_txt"
-        android:gravity="bottom|center"
-        android:text="alejandro"
-        android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <EditText
-        android:id="@+id/edidtextEstado12"
-        android:layout_width="250dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/colores_txt"
-        android:gravity="bottom|center"
-        android:text="alejandro"
-        android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/edidtextTipo12" />
-
-    <EditText
         android:id="@+id/edidtextRegion12"
         android:layout_width="250dp"
         android:layout_height="20dp"
@@ -129,6 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="cursive"
         android:text="Datos del Inmueble"
         android:textColor="#0F48F0"
@@ -219,7 +188,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.253" />
 
     <Button
         android:id="@+id/btnProp"
@@ -235,7 +204,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.264" />
 
 
     <Button
@@ -252,29 +221,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edidTexDescripcion12"
-        android:layout_width="345dp"
-        android:layout_height="64dp"
-        android:layout_margin="0dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="28dp"
-        android:background="@drawable/colores_txt"
-        android:ems="10"
-        android:gravity="center_vertical|center_horizontal"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtView_email" />
-
-    <EditText
         android:id="@+id/edidtextTamaño12"
         android:layout_width="250dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="13dp"
         android:background="@drawable/colores_txt"
         android:gravity="bottom|center"
         android:text="alejandro"
@@ -282,7 +234,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.743"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/edidtextEstado12" />
+        app:layout_constraintTop_toBottomOf="@+id/SpinnerEstado" />
 
     <Button
         android:id="@+id/guardarBtn"
@@ -290,15 +242,66 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="162dp"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/bacground_btn"
         android:fontFamily="cursive"
         android:gravity="center_vertical|center"
         android:text="Actualizar"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edidtextprecio12" />
+
+    <Spinner
+        android:id="@+id/SpinnerEstado"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SpineerTipo12" />
+
+    <Spinner
+        android:id="@+id/SpineerTipo12"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/edidTexDescripcion12"
+        android:layout_width="388dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalleImg1" />
+
+    <TextView
+        android:id="@+id/edidtextTipo12"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="11dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/SpineerTipo12"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/edidtextEstado12"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/SpinnerEstado"
+        app:layout_constraintTop_toBottomOf="@+id/edidtextTipo12" />
 
 </android.support.constraint.ConstraintLayout>

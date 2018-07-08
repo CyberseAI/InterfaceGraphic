@@ -86,7 +86,10 @@
         <activity
             android:name=".Filtro_casas"
             android:label="@string/title_activity_filtro_casas"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Mapas.MapsUbicUser"
+            android:label="@string/title_activity_maps_ubic_user"></activity>
     </application>
 
 </manifest>
