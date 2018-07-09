@@ -1,6 +1,7 @@
 package com.example.hp.interfacegrafic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
@@ -29,7 +30,6 @@ import cz.msebera.android.httpclient.Header;
 public class Filtro_casas extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView LIST;
-    private ArrayList<ItemMenuStructure> LISTINFO;
     private Context root;
     public String TIPO;
 
@@ -37,13 +37,11 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        DataApp.LISTDATA = new ArrayList<ItemMenuStructure>();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().build();
         StrictMode.setThreadPolicy( policy );
 
         root = this;
-
-        LISTINFO = new ArrayList<ItemMenuStructure>();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtro_casas);
@@ -91,7 +89,7 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
                             urlLists.add("http://192.168.43.150:7777" + listGalery.getString(j));
                         }
 
-                        LISTINFO.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
+                        DataApp.LISTDATA.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
                                 "", "", "", cantidadCuartos, cantidadBaños,
                                 "", "", lat, lon, correo, "", id, urlLists));
                     }
@@ -111,13 +109,18 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
         //LISTINFO.add( new ItemList( "https://koreaboo-cdn.storage.googleapis.com/2017/06/yoona-2015.jpg", "prueva", "159", "move" ));
         //EditText search = (EditText)this.findViewById( R.id.searchmovie );
         //eventos
-        MenuBaseAdapter adapter = new MenuBaseAdapter(this, LISTINFO);
+        MenuBaseAdapter adapter = new MenuBaseAdapter(this, DataApp.LISTDATA);
         LIST.setAdapter(adapter);
         LIST.setOnItemClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        String datalist = DataApp.LISTDATA.get(position).getUrl();
+        //UserData.IDCasa = datalist;
+        Intent intent = new Intent(this, FiltroCasasView.class);
+        intent.putExtra("size", position);
+        intent.putExtra("id", datalist);
+        this.startActivity(intent);
     }
 }
