@@ -1,6 +1,7 @@
 package com.example.hp.interfacegrafic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
@@ -118,6 +119,11 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        String datalist = LISTINFO.get(position).getUrl();
+        //UserData.IDCasa = datalist;
+        Intent intent = new Intent(this, ViewCasa.class);
+        intent.putExtra("size", position);
+        intent.putExtra("id", datalist);
+        this.startActivity(intent);
     }
 }
