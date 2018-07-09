@@ -89,7 +89,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Mapas.MapsUbicUser"
-            android:label="@string/title_activity_maps_ubic_user"></activity>
+            android:label="@string/title_activity_maps_ubic_user" />
+        <activity android:name=".FiltroCasasView" />
+        <activity
+            android:name=".Gallery_Filtro"
+            android:label="@string/title_activity_gallery__filtro"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

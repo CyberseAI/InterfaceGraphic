@@ -121,7 +121,7 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String datalist = LISTINFO.get(position).getUrl();
         //UserData.IDCasa = datalist;
-        Intent intent = new Intent(this, ViewCasa.class);
+        Intent intent = new Intent(this, FiltroCasasView.class);
         intent.putExtra("size", position);
         intent.putExtra("id", datalist);
         this.startActivity(intent);
