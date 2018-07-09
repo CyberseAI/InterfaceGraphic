@@ -33,9 +33,9 @@ public class FiltroCasasView extends AppCompatActivity {
     public  String idCasa;   //id de la casa
     //public  String idMapa; ///recuperando id desde mapas
 
-    protected TextView detalleTipo, detalleDescripcon, detalleEstado, detalleSuperficie,
-            detalleRegion, detalleCantidadCuartos,detallePrecio;
-    protected ImageView detalleImg;
+    protected TextView detalleTipo1, detalleDescripcon1, detalleEstado1, detalleSuperficie1,
+            detalleRegion1, detalleCantidadCuartos1,detallePrecio1;
+    protected ImageView detalleImg12;
 
     protected FiltroCasasView ROOT;
 
@@ -118,13 +118,13 @@ public class FiltroCasasView extends AppCompatActivity {
     }
     private void informacion(){
 
-        this.detalleDescripcon.setText(DataFiltro.getDescripcion());
-        this.detalleTipo.setText(DataFiltro.getTipo());
-        this.detalleEstado.setText(DataFiltro.getEsatado());
-        this.detalleSuperficie.setText(DataFiltro.getSuperficie());
-        this.detalleRegion.setText(DataFiltro.getRegion());
-        this.detalleCantidadCuartos.setText(DataFiltro.getCantidadCuartos());
-        this.detallePrecio.setText(DataFiltro.getPrecio());
+        this.detalleDescripcon1.setText(DataFiltro.getDescripcion());
+        this.detalleTipo1.setText(DataFiltro.getTipo());
+        this.detalleEstado1.setText(DataFiltro.getEsatado());
+        this.detalleSuperficie1.setText(DataFiltro.getSuperficie());
+        this.detalleRegion1.setText(DataFiltro.getRegion());
+        this.detalleCantidadCuartos1.setText(DataFiltro.getCantidadCuartos());
+        this.detallePrecio1.setText(DataFiltro.getPrecio());
         /*HIloImg imgLoad = new HIloImg();
         imgLoad.execute(Data.getImg());
         imgLoad.setLoadImage(this.detalleImg, this);*/
@@ -132,15 +132,15 @@ public class FiltroCasasView extends AppCompatActivity {
     }
     private void loadViewcomponets() {
 
-        this.detalleDescripcon = (TextView) this.findViewById(R.id.detalleDescripcon4);
-        this.detalleTipo = (TextView) this.findViewById(R.id.detalleTipo4);
-        this.detalleEstado = (TextView) this.findViewById(R.id.detalleEstado4);
-        this.detalleSuperficie = (TextView) this.findViewById(R.id.detalleSuperficie4);
-        this.detalleRegion = (TextView) this.findViewById(R.id.detalleRegion4);
-        this.detalleCantidadCuartos = (TextView) this.findViewById(R.id.detalleCantidadCuartos4);
-        this.detallePrecio = (TextView) this.findViewById(R.id.detallePrecio4);
+        this.detalleDescripcon1 = (TextView) this.findViewById(R.id.detalleDescripcon4);
+        this.detalleTipo1 = (TextView) this.findViewById(R.id.detalleTipo4);
+        this.detalleEstado1 = (TextView) this.findViewById(R.id.detalleEstado4);
+        this.detalleSuperficie1 = (TextView) this.findViewById(R.id.detalleSuperficie4);
+        this.detalleRegion1 = (TextView) this.findViewById(R.id.detalleRegion4);
+        this.detalleCantidadCuartos1 = (TextView) this.findViewById(R.id.detalleCantidadCuartos4);
+        this.detallePrecio1 = (TextView) this.findViewById(R.id.detallePrecio4);
 
-        this.detalleImg = (ImageView)  this.findViewById(R.id.detalleImg4);
+        this.detalleImg12 =  (ImageView)  this.findViewById(R.id.detalleImg4);
     }
     public void loadComponents()
     {

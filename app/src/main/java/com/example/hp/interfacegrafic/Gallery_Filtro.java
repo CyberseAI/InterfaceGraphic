@@ -1,5 +1,6 @@
 package com.example.hp.interfacegrafic;
 
+import android.graphics.Bitmap;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.hp.interfacegrafic.DATA.DataApp;
+import com.example.hp.interfacegrafic.ItemMenu.LoaderImg;
+import com.example.hp.interfacegrafic.ItemMenu.OnLoadCompleImg;
+
+import java.util.ArrayList;
 
 public class Gallery_Filtro extends AppCompatActivity {
 
@@ -28,17 +36,20 @@ public class Gallery_Filtro extends AppCompatActivity {
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
+    public static int gallery;
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
      */
-    private ViewPager mViewPager;
+    private ViewPager  mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery__filtro);
+
+        gallery = this.getIntent().getExtras().getInt( "id" );
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -87,7 +98,7 @@ public class Gallery_Filtro extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements OnLoadCompleImg {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -102,8 +113,10 @@ public class Gallery_Filtro extends AppCompatActivity {
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+            ArrayList<String> info = DataApp.LISTDATA.get(gallery).getId();
+            Gallery_Filtro.PlaceholderFragment fragment = new Gallery_Filtro.PlaceholderFragment();
             Bundle args = new Bundle();
+            args.putString("url",info.get(sectionNumber));
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
@@ -113,9 +126,25 @@ public class Gallery_Filtro extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_gallery__filtro, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+            ImageView img = (ImageView)rootView.findViewById(R.id.imgGallery4);
+            String url = this.getArguments().getString("url");
+            LoaderImg loaderImg = new LoaderImg();
+            loaderImg.setOnloadCompleteImg(img,0,this);
+            loaderImg.execute(url);
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
+        }
+
+        @Override
+        public void setLoadImage(ImageView container, Bitmap img) {
+
+        }
+
+        @Override
+        public void OnloadCompleteImgResult(ImageView img, int position, Bitmap imgsourceimg) {
+
         }
     }
 
@@ -139,7 +168,8 @@ public class Gallery_Filtro extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return DataApp.LISTDATA.get(gallery).getId().size();
+
         }
     }
 }
