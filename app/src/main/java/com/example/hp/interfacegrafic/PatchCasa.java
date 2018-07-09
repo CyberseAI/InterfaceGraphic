@@ -8,9 +8,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,9 +53,10 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
     public static int size; //este es el cantidad imagenes
     public  String idCasa;   //id de la casa
     //public  String idMapa; ///recuperando id desde mapas
-
-    protected EditText detalleTipo, detalleDescripcon, detalleEstado, detalleSuperficie,
+    protected TextView detalleTipo,detalleEstado;
+    protected EditText detalleDescripcon, detalleSuperficie,
             detalleRegion, detalleCantidadCuartos,detallePrecio;
+    protected Spinner Spinnert,SpinnerE ;
     protected ImageView detalleImg;
 
     protected PatchCasa ROOT;
@@ -64,6 +68,9 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
     HttpClient cliente;
     HttpPatch patch;
     List<NameValuePair> lista;
+
+    public  String Tipo;
+    public  String Estado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,9 +127,9 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
                             String cantidadCuartos = response.getString("cantidadCuartos");
                             String superficie = response.getString("superficie");
                             String user = response.getString("user");
+                            String id = response.getString("_id");
                             Number lat = response.getDouble("lat");
                             Number lon = response.getDouble("lon");
-                            String id = response.getString("_id");
                             //String url = DataApp.HOST + (String)response.getJSONArray("gallery").get(0);
                             JSONArray listGalery= response.getJSONArray("gallery");
                             ArrayList<String> urlLists = new ArrayList<String>();
@@ -130,7 +137,8 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
                                 urlLists.add(DataApp.HOST + listGalery.getString(j));
                             }
                             Data = new CasaIdDeatalle(tipo, esatado,precio,region,descripcion,
-                                    cantidadCuartos,superficie,user,lat,lon,id,urlLists);
+                                    cantidadCuartos,superficie,user,id,lat,lon,urlLists);
+
                             ROOT.informacion();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -151,10 +159,46 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
     }
 
     private void loadViewcomponets() {
-
+        //<<<<<<<<<<<<<<<<<<<<<<
         this.detalleDescripcon = (EditText) this.findViewById(R.id.edidTexDescripcion12);
-        this.detalleTipo = (EditText) this.findViewById(R.id.edidtextTipo12);
-        this.detalleEstado = (EditText) this.findViewById(R.id.edidtextEstado12);
+        this.detalleTipo = (TextView) this.findViewById(R.id.edidtextTipo12);
+        this.detalleEstado = (TextView) this.findViewById(R.id.edidtextEstado12);
+
+       this.Spinnert = (Spinner) this.findViewById(R.id.SpineerTipo12);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tipos,
+                android.R.layout.simple_spinner_item);
+        Spinnert.setAdapter(adapter);
+        Spinnert.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                detalleTipo.setText(parent.getItemAtPosition(position).toString());
+                //parent.setTag(Tipo);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        this.SpinnerE = (Spinner) this.findViewById(R.id.SpinnerEstado);
+        ArrayAdapter<CharSequence> adapterEstado = ArrayAdapter.createFromResource(this,R.array.estado,
+                android.R.layout.simple_spinner_item);
+        SpinnerE.setAdapter(adapterEstado);
+        SpinnerE.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                detalleEstado.setText(parent.getItemAtPosition(position).toString());
+                //parent.setTag(Estado);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         this.detalleSuperficie = (EditText) this.findViewById(R.id.edidtextTamaño12);
         this.detalleRegion = (EditText) this.findViewById(R.id.edidtextRegion12);
         this.detalleCantidadCuartos = (EditText) this.findViewById(R.id.edidtexthabitaciones12);
@@ -167,8 +211,8 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
             @Override
             public void onClick(View v) {
 
-                if (detalleTipo.getText().toString().equals("")){
-                    Toast.makeText(PatchCasa.this, "porfabor introdusca su ciudad",
+                if (detallePrecio.getText().toString().equals("")){
+                    Toast.makeText(PatchCasa.this, "Precio no puede ir vacio",
                             Toast.LENGTH_LONG).show();
 
                 }else {

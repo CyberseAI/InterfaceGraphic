@@ -14,9 +14,9 @@ public class CasaIdDeatalle {
     private String cantidadCuartos ;
     private String superficie;
     private String user;
+    private String id;
     private Number lat;
     private Number lon;
-    private String id;
     private ArrayList<String> url;
     private ArrayList<Bitmap> img;
 
@@ -29,9 +29,9 @@ public class CasaIdDeatalle {
                            String cantidadCuartos,
                            String superficie,
                            String user,
+                           String id,
                            Number lat,
                            Number lon,
-                           String id,
                            ArrayList<String> url){
 
         this.tipo = tipo;
@@ -42,9 +42,9 @@ public class CasaIdDeatalle {
         this.cantidadCuartos = cantidadCuartos;
         this.superficie = superficie;
         this.user = user;
-        this.lat=lat;
-        this.lon=lon;
         this.id = id;
+        this.lat = lat;
+        this.lon = lon;
         this.url = url;
     }
 

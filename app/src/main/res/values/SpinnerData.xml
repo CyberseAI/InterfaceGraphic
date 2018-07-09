@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="tipos">
+
+        <item></item>
+        <item>Departamento</item>
+        <item>Casa</item>
+        <item>Edificio</item>
+
+
+    </string-array>
+
+    <string-array name="estado">
+
+        <item></item>
+        <item>Venta</item>
+        <item>Alquiler</item>
+        <item>Anticretico</item>
+
+
+    </string-array>
+
+</resources>

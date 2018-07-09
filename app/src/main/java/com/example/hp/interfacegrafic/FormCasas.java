@@ -7,8 +7,11 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +41,10 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class FormCasas extends AppCompatActivity implements View.OnClickListener
 {
     private Context root;
+    public  String Tipo;
+    public String Estado;
+    Spinner tipo;
+    Spinner estado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +52,41 @@ public class FormCasas extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_casas);
         loadComponents();
+        tipo  = (Spinner) this.findViewById(R.id.txt_tipo);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tipos,
+                android.R.layout.simple_spinner_item);
+        tipo.setAdapter(adapter);
+        tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Tipo = parent.getItemAtPosition(position).toString();
+                parent.setTag(Tipo);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        estado = (Spinner)this.findViewById(R.id.txt_estado);
+        ArrayAdapter<CharSequence> adapterEstado = ArrayAdapter.createFromResource(this,R.array.estado,
+                android.R.layout.simple_spinner_item);
+        estado.setAdapter(adapterEstado);
+        estado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Estado = parent.getItemAtPosition(position).toString();
+                parent.setTag(Estado);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void loadComponents()
@@ -57,8 +99,8 @@ public class FormCasas extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
 
         //TextView street = (TextView)this.findViewById(R.id.street);
-        EditText tipo  = (EditText) this.findViewById(R.id.txt_tipo);
-        EditText estado = (EditText)this.findViewById(R.id.txt_estado);
+
+
         EditText precio= (EditText)this.findViewById(R.id.txt_precio);
         EditText ciudad = (EditText)this.findViewById(R.id.txt_ciudad);
         EditText region = (EditText)this.findViewById(R.id.txt_Region);
@@ -77,8 +119,8 @@ public class FormCasas extends AppCompatActivity implements View.OnClickListener
 
         //params.put("street", street.getText());
 
-        params.put("tipo", tipo.getText());
-        params.put("estado",estado.getText());
+        params.put("tipo", tipo.getTag());
+        params.put("estado",estado.getTag());
         params.put("precio",precio.getText());
         params.put("ciudad",ciudad.getText());
         params.put("region",region.getText());
