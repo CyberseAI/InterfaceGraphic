@@ -51,6 +51,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
+        android:fontFamily="cursive"
+        android:textSize="20dp"
         android:text="La descripcion de la casa vendra aqui"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

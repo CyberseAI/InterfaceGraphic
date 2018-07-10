@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
-    android:layout_height="126dp">
+    android:layout_height="500dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="126dp">
+        android:layout_height="525dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="126dp"
+            android:layout_height="match_parent"
             android:background="@drawable/degarriba">
 
             <ImageView
                 android:id="@+id/Img_casa"
-                android:layout_width="94dp"
-                android:layout_height="91dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="372dp"
+                android:layout_height="488dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/ic_launcher" />
@@ -29,46 +31,38 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Tipo"
                 android:fontFamily="cursive"
+                android:text="Tipo"
                 android:textColor="#011a4e"
-                app:layout_constraintStart_toEndOf="@+id/Img_casa"
+                app:layout_constraintEnd_toStartOf="@+id/getTxtTipo"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="cursive"
                 android:text="Estado"
-                android:fontFamily="cursive"
                 android:textColor="#02085e"
-                app:layout_constraintStart_toEndOf="@+id/Img_casa"
+                app:layout_constraintEnd_toStartOf="@+id/getTxtEstado"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="19dp"
-                android:text="Precio"
-                android:fontFamily="cursive"
-                android:textColor="#02085e"
-                app:layout_constraintStart_toEndOf="@+id/Img_casa"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <TextView
                 android:id="@+id/getTxtTipo"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="180dp"
                 android:layout_marginTop="16dp"
-                android:text=""
                 android:fontFamily="cursive"
+                android:text=""
                 android:textColor="#02085e"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -77,10 +71,10 @@
                 android:id="@+id/getTxtEstado"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="15dp"
-                android:text=""
+                android:layout_marginEnd="172dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="cursive"
+                android:text=""
                 android:textColor="#02085e"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/getTxtTipo" />
@@ -89,13 +83,13 @@
                 android:id="@+id/getTxtPrecio"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="20dp"
-                android:text=""
+                android:layout_marginBottom="48dp"
+                android:layout_marginEnd="4dp"
                 android:fontFamily="cursive"
+                android:text=""
                 android:textColor="#02085e"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/getTxtEstado" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </android.support.constraint.ConstraintLayout>

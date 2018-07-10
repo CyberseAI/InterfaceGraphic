@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/jascuadrado"
     tools:context=".FiltroCasasView">
 
     <TextView
@@ -12,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Galería de Imagen"
-        android:textStyle="bold"
-        android:textSize="20dp"
         android:fontFamily="cursive"
+        android:text="Galería de Imagen"
         android:textColor="#0F48F0"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,11 +36,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="112dp"
-        android:text="Descripción"
-        android:textStyle="bold"
-        android:textSize="20dp"
         android:fontFamily="cursive"
+        android:text="Descripción"
         android:textColor="#0F48F0"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtView_apellido" />
 
@@ -50,6 +51,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
+        android:fontFamily="cursive"
+        android:textSize="22dp"
         android:text="La descripcion de la casa vendra aqui"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,10 +65,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Datos del Inmueble"
-        android:textStyle="bold"
+        android:textColor="#0F48F0"
         android:textSize="20dp"
         android:fontFamily="cursive"
-        android:textColor="#0F48F0"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detalleDescripcon4" />
 
@@ -75,8 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="11dp"
-        android:text="Tipo:"
         android:fontFamily="cursive"
+        android:text="Tipo:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -86,8 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Estado:"
         android:fontFamily="cursive"
+        android:text="Estado:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -97,8 +100,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="7dp"
-        android:text="Tamaño:"
         android:fontFamily="cursive"
+        android:text="Tamaño:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -108,8 +111,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Region:"
         android:fontFamily="cursive"
+        android:text="Region:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -119,8 +122,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Cant de Hab:"
         android:fontFamily="cursive"
+        android:text="Cant de Hab:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -130,8 +133,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Precio:"
         android:fontFamily="cursive"
+        android:text="Precio:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -142,9 +145,9 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/bacground_btn"
+        android:fontFamily="cursive"
         android:text="Ver Ubicación"
         android:textColor="#FFFFFF"
-        android:fontFamily="cursive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -155,9 +158,9 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bacground_btn"
+        android:fontFamily="cursive"
         android:text="Perfil Propietario"
         android:textColor="#FFFFFF"
-        android:fontFamily="cursive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -229,9 +232,9 @@
         android:layout_marginEnd="68dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/bacground_btn"
+        android:fontFamily="cursive"
         android:text="ver imagenes"
         android:textColor="#f4df95"
-        android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
