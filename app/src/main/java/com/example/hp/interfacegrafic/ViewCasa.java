@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hp.interfacegrafic.DATA.DataApp;
 import com.example.hp.interfacegrafic.DATA.UserData;
@@ -98,6 +99,8 @@ public class ViewCasa extends AppCompatActivity implements OnLoadCompleImg
         });
 
     }
+    private String lat;
+    private String lon;
 
     private void loadAsinkData() {
         AsyncHttpClient casadetalle= new AsyncHttpClient();

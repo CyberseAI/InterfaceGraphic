@@ -138,6 +138,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
                             }
                             Data = new CasaIdDeatalle(tipo, esatado,precio,region,descripcion,
                                     cantidadCuartos,superficie,user,id,lat,lon,urlLists);
+
                             ROOT.informacion();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -163,7 +164,7 @@ public class PatchCasa extends AppCompatActivity implements OnLoadCompleImg {
         this.detalleTipo = (TextView) this.findViewById(R.id.edidtextTipo12);
         this.detalleEstado = (TextView) this.findViewById(R.id.edidtextEstado12);
 
-        this.Spinnert = (Spinner) this.findViewById(R.id.SpineerTipo12);
+       this.Spinnert = (Spinner) this.findViewById(R.id.SpineerTipo12);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tipos,
                 android.R.layout.simple_spinner_item);
         Spinnert.setAdapter(adapter);
