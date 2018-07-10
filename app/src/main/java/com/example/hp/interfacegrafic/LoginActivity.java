@@ -144,6 +144,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 login.putExtra("email", result.getSignInAccount().getEmail());
 
                 startActivity(login);
+                finish();
             }
             else
             {

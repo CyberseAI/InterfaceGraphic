@@ -110,6 +110,6 @@ public class ListFragmentCasa extends Fragment implements AdapterView.OnItemClic
         intent.putExtra("size", position);
         intent.putExtra("id", datalist);
         this.getActivity().startActivity(intent);
-
+        this.getActivity().finish();
     }
 }
