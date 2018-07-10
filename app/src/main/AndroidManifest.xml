@@ -94,7 +94,8 @@
         <activity
             android:name=".Gallery_Filtro"
             android:label="@string/title_activity_gallery__filtro"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FiltroCasa_Precio"></activity>
     </application>
 
 </manifest>

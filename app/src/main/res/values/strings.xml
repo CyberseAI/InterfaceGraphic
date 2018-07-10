@@ -23,4 +23,5 @@
     <string name="title_activity_filtro_casas">Filtro_casas</string>
     <string name="title_activity_maps_ubic_user">Map</string>
     <string name="title_activity_gallery__filtro">Gallery_Filtro</string>
+    <string name="title_activity_patch_maps">Map</string>
 </resources>

@@ -57,15 +57,11 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
             }
         });
         loadInitialRestData();
-
-        //if (this.getIntent().getExtras() != null) {
-            //TIPO = this.getIntent().getExtras().getString("tipo");
-        //}
     }
 
     private void loadInitialRestData(){
         AsyncHttpClient client = new AsyncHttpClient( );
-        client.get("http://192.168.43.150:7777/api/v1.0/filtro_tipo/?tipo="+ UserData.FTipo + "&estado=" +
+        client.get(DataApp.HOST + "/api/v1.0/filtro_tipo/?tipo="+ UserData.FTipo + "&estado=" +
                         UserData.FEstado,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -86,7 +82,7 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
                         JSONArray listGalery= obj.getJSONArray("gallery");
                         ArrayList<String> urlLists = new ArrayList<String>();
                         for (int j = 0; j < listGalery.length(); j++){
-                            urlLists.add("http://192.168.43.150:7777" + listGalery.getString(j));
+                            urlLists.add(DataApp.HOST + listGalery.getString(j));
                         }
 
                         DataApp.LISTDATA.add(new ItemMenuStructure(tipo, estado, precio, ciudad,
@@ -106,9 +102,6 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
     }
     private void loadConponents() {
         LIST = (ListView) this.findViewById(R.id.Filtrodecasas124);
-        //LISTINFO.add( new ItemList( "https://koreaboo-cdn.storage.googleapis.com/2017/06/yoona-2015.jpg", "prueva", "159", "move" ));
-        //EditText search = (EditText)this.findViewById( R.id.searchmovie );
-        //eventos
         MenuBaseAdapter adapter = new MenuBaseAdapter(this, DataApp.LISTDATA);
         LIST.setAdapter(adapter);
         LIST.setOnItemClickListener(this);
@@ -117,7 +110,6 @@ public class Filtro_casas extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String datalist = DataApp.LISTDATA.get(position).getUrl();
-        //UserData.IDCasa = datalist;
         Intent intent = new Intent(this, FiltroCasasView.class);
         intent.putExtra("size", position);
         intent.putExtra("id", datalist);

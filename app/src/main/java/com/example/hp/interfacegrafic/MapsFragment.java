@@ -49,7 +49,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         if (DataApp.LISTDATA != null && DataApp.LISTDATA.size() > 0) {
             for (int i = 0; i < DataApp.LISTDATA.size(); i++) {
                 LatLng position = new LatLng(DataApp.LISTDATA.get(i).getLat(), DataApp.LISTDATA.get(i).getLon());
-                MarkerOptions obj = new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getTipo());
+                MarkerOptions obj = new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getPrecio());
 
                 id = DataApp.LISTDATA.get(i).getUrl();
                 // en ves de gettipo se puedo poner getUrl que es la id para recuperar datos
@@ -84,7 +84,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
 
         // Add a marker in Sydney and move the camera
         LatLng potosi = new LatLng(-19.578297, -65.758633);
-        mMap.addMarker(new MarkerOptions().position(potosi).title("Marker in Sydney"));
+       // mMap.addMarker(new MarkerOptions().position(potosi).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(potosi, 14));
     }
 

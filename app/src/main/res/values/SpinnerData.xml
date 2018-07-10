@@ -21,4 +21,26 @@
 
     </string-array>
 
+    <string-array name="max">
+
+        <item>25000</item>
+        <item>50000</item>
+        <item>100000</item>
+        <item>500000</item>
+        <item>1000000</item>
+        <item>1000500</item>
+        <item>2000000</item>
+    </string-array>
+
+    <string-array name="min">
+
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>10500</item>
+        <item>20000</item>
+    </string-array>
+
 </resources>

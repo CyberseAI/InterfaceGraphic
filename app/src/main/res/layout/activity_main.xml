@@ -106,13 +106,11 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="210dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="101dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="78dp"
-        android:text="Buscar"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:text="Buscar por tipo o venta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCasaEstado" />
 
@@ -135,6 +133,18 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <Button
+        android:id="@+id/btnPrecioBusqueda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="76dp"
+        android:text="Buscar por Precio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCasaEstado" />
 
     <!--Button
         android:id="@+id/btnInmuebleAdd"

@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     public String valor2;
 
     private  Context bntFiltro;
+    private Context btnFiltroPrecio;
 
     private Context btnBuscar;
     @SuppressLint("WrongViewCast")
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         root=this;
+        btnFiltroPrecio = this;
+
+
         filtroTipo =(Spinner) findViewById(R.id.spinnerCasaTipos);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.tipos,
                     android.R.layout.simple_spinner_item);
@@ -94,12 +98,25 @@ public class MainActivity extends AppCompatActivity
 
         bntFiltro = this;
 
+        loaComponetsFiltroPrecio();
+
 
         //btnInmueble = this;
        // loadbtnInmueble();
 
         //btnInmuebleId = this;
         //loadIdInmueble ();
+    }
+
+    private void loaComponetsFiltroPrecio() {
+        Button btnMAs = (Button)this.findViewById(R.id.btnPrecioBusqueda);
+        btnMAs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent ubic = new Intent(btnFiltroPrecio, FiltroCasa_Precio.class);
+                btnFiltroPrecio.startActivity(ubic);
+            }
+        });
     }
 
     private void loadFiltroComponents(final String valor) {

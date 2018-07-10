@@ -5,8 +5,8 @@ public class UserData {
     static public String ID;
     static public String FTipo;
     static public String FEstado;
-    static public String Estado1;
-    static public String Tipo1;
+    static public String Max321;
+    static public String MIn321;
 
 
 }
